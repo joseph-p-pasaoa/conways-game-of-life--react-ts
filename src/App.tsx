@@ -28,6 +28,25 @@ const App = () => {
       const [row, col] = coordinates;
       this.board[row][col] = !this.board[row][col];
     }
+
+    evalNeighbors = (inputCoordinates: [number, number]): number => {
+      const [inputRow, inputCol] = inputCoordinates;
+      let numOfAlive: number = 0;
+      for (let row = -1; row <= 1; row++) {
+        for (let col = -1; col <= 1; col++) {
+          const [currentRow, currentCol] =  [inputRow + row, inputCol + col];
+          if (row === 0 && col === 0) {
+            continue;
+          }
+          if (
+            this.board[currentRow] &&
+            this.board[currentRow][currentCol] &&
+            this.board[currentRow][currentCol] === true
+            ) numOfAlive += 1;
+        }
+      }
+      return numOfAlive;
+    }
   }
 
 
