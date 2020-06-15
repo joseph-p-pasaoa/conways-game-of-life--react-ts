@@ -47,6 +47,23 @@ const App = () => {
       }
       return numOfAlive;
     }
+
+    evalNextNodeState = (inputCoordinates: [number, number]): boolean => {
+      const [inputRow, inputCol] = inputCoordinates;
+      if (this.board[inputRow] === undefined || this.board[inputRow][inputCol] === undefined) {
+        throw Error('out-of-bounds');
+      }
+      const currentIsAlive = this.board[inputRow][inputCol];
+      const numNeighbors = this.evalNeighbors([inputRow, inputCol]);
+      if (currentIsAlive) {
+        if (numNeighbors === 2 || numNeighbors === 3) {
+          return true;
+        }
+      } else {
+        if (numNeighbors === 3) return true;
+      }
+      return false;
+    }
   }
 
 
