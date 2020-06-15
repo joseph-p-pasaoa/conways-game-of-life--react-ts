@@ -23,6 +23,11 @@ const App = () => {
         this.board.push(newRow);
       }
     }
+
+    toggleNode = (coordinates: [number, number]): void => {
+      const [row, col] = coordinates;
+      this.board[row][col] = !this.board[row][col];
+    }
   }
 
 
