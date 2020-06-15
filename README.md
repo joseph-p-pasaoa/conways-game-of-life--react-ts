@@ -8,8 +8,9 @@ Built atop [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game
 
 ### Technologies Implemented
 + React
++ Typescript
 + Javascript ES5+
-+ Node
++ Node.js
 + SCSS
 + CSS3
 + HTML5
