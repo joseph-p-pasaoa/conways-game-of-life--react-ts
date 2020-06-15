@@ -68,6 +68,16 @@ const App = () => {
 
 
   const board = new Board(5, 10);
+  board.toggleNode([0, 1]);
+  board.toggleNode([0, 2]);
+  board.toggleNode([1, 1]);
+  board.toggleNode([1, 2]);
+  console.log(board.evalNeighbors([2, 3]) === 1);
+  console.log(board.evalNeighbors([1, 1]) === 3);
+  console.log(board.evalNeighbors([4, 6]) === 0);
+  console.log(board.evalNextNodeState([2, 3]) === false);
+  console.log(board.evalNextNodeState([1, 1]) === true);
+  console.log(board.evalNextNodeState([4, 6]) === false);
   console.log(board);
 
   return (
