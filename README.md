@@ -38,7 +38,7 @@ class Board {
 
   evalNeighbors = (inputCoordinates: [number, number]): number => {
     const [inputRow, inputCol] = inputCoordinates;
-    let numOfAlive: number = 0;
+    let numOfAlive = 0;
     for (let row = -1; row <= 1; row++) {
       for (let col = -1; col <= 1; col++) {
         const [currentRow, currentCol] =  [inputRow + row, inputCol + col];
