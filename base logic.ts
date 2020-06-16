@@ -1,22 +1,9 @@
-# Conway's Game of Life: A Tribute
+/*
+JOSEPH P. PASAOA
+BASE LOGIC | Tribute to Conway's Game of Life
+*/
 
-## Developer: [Joseph P. Pasaoa](https://github.com/joseph-p-pasaoa)
 
-<!-- ![screenshot]() -->
-
-Built atop [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
-
-### Technologies Implemented
-+ React
-+ Typescript
-+ Javascript ES5+
-+ Node.js
-+ SCSS
-+ CSS3
-+ HTML5
-
-### My Base Logic
-```
 interface Array<T> {
   fill(value: T): Array<T>;
 }
@@ -92,4 +79,26 @@ class Board {
     this.matrix = [...newMatrix];
   }
 }
-```
+
+
+/* TESTING */
+const board = new Board(5, 10);
+board.toggleNode([0, 1]);
+board.toggleNode([1, 1]);
+board.toggleNode([2, 1]);
+board.toggleNode([2, 2]);
+board.toggleNode([1, 3]);
+board.toggleNode([2, 7]);
+board.toggleNode([3, 7]);
+board.toggleNode([3, 8]);
+console.log(board.evalNeighbors([2, 3]) === 1);
+console.log(board.evalNeighbors([1, 1]) === 3);
+console.log(board.evalNeighbors([4, 6]) === 0);
+console.log(board.evalNextNodeState([2, 3]) === false);
+console.log(board.evalNextNodeState([1, 1]) === true);
+console.log(board.evalNextNodeState([4, 6]) === false);
+console.log(board.matrix);
+board.runTick();
+console.log(board.matrix);
+board.runTick();
+console.log(board.matrix);
