@@ -64,8 +64,8 @@ body {
 .matrix {
     width: max-content;
     margin: 2rem;
-    border-top: solid 1px #000;
-    border-left: solid 1px #000;
+    border-top: solid 1px #ccc;
+    border-left: solid 1px #ccc;
 }
 
 .row {
@@ -75,13 +75,40 @@ body {
 }
 
 .cell {
-    width: 10px;
-    height: 10px;
+    position: relative;
+
+    width: 1rem;
+    height: 1rem;
+    border-right: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+
     background-color: #f5f5f5;
-    border-right: solid 1px #000;
-    border-bottom: solid 1px #000;
+    transition: background-color .7s ease-out;
+
+    &::after {
+        content: '';
+
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        transition: background-color .5s ease-out, outline .5s ease-out;
+    }
+
+    &:hover::after {
+        background-color: #8ffa;
+        outline: solid 2px #fa0a;
+        z-index: 10;
+    }
 
     &.alive {
         background-color: orange;
+
+        &:hover::after {
+            background-color: #12e;
+            outline: solid 2px #fff;
+            z-index: 10;
+        }
     }
 }
