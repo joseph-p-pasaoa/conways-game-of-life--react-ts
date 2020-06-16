@@ -122,7 +122,13 @@ const App = () => {
 
   return (
     <div className="App">
-      Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.
+      Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
+      <button
+        type='button'
+        onClick={runTick}
+      >
+        Advance +1 Tick
+      </button>
       <MatrixDisplay
         boolMatrix={boolMatrix}
         handleClickCell={handleClickCell}
