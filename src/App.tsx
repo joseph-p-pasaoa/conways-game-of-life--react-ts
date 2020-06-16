@@ -46,9 +46,12 @@ const App = () => {
   //   this.matrix[row][col] = !this.matrix[row][col];
   // }
 
-  // const handleClickCell = (event) => {
-
-  // }
+  const handleClickCell = (targetCoordinates: [number, number]) => {
+    const [targetRow, targetCol] = targetCoordinates;
+    const newBoolMatrix = [ ...boolMatrix ];
+    newBoolMatrix[targetRow][targetCol] = !newBoolMatrix[targetRow][targetCol];
+    setBoolMatrix(newBoolMatrix);
+  }
 
   //   evalNeighbors = (inputCoordinates: [number, number]): number => {
   //     const [inputRow, inputCol] = inputCoordinates;
@@ -134,7 +137,10 @@ const App = () => {
   return (
     <div className="App">
       Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.
-      <MatrixDisplay boolMatrix={boolMatrix} />
+      <MatrixDisplay
+        boolMatrix={boolMatrix}
+        handleClickCell={handleClickCell}
+      />
     </div>
   );
 }
