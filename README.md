@@ -66,10 +66,8 @@ class Board {
       if (numNeighbors === 2 || numNeighbors === 3) {
         return true;
       }
-    } else {
-      if (numNeighbors === 3) {
-        return true;
-      }
+    } else if (numNeighbors === 3) {
+      return true;
     }
     return false;
   }

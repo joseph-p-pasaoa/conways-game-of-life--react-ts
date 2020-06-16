@@ -32,7 +32,7 @@ const App = () => {
   /* HELPER FUNCTIONS */
   const evalNeighbors = (inputCoordinates: [number, number]): number => {
     const [inputRow, inputCol] = inputCoordinates;
-    let numOfAlive: number = 0;
+    let numOfAlive = 0;
     for (let row = -1; row <= 1; row++) {
       for (let col = -1; col <= 1; col++) {
         const [currentRow, currentCol] =  [inputRow + row, inputCol + col];
@@ -60,10 +60,8 @@ const App = () => {
       if (numNeighbors === 2 || numNeighbors === 3) {
         return true;
       }
-    } else {
-      if (numNeighbors === 3) {
-        return true;
-      }
+    } else if (numNeighbors === 3) {
+      return true;
     }
     return false;
   }
