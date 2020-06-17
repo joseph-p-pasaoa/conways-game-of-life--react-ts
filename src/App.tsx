@@ -26,7 +26,7 @@ const createMatrix = (height: number, length: number): boolean[][] => {
 
 
 const App = () => {
-  const [boolMatrix, setBoolMatrix] = useState(createMatrix(50, 50));
+  const [boolMatrix, setBoolMatrix] = useState(createMatrix(36, 54));
 
 
   /* HELPER FUNCTIONS */
