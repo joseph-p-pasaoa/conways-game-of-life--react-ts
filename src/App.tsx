@@ -26,7 +26,12 @@ const createMatrix = (height: number, length: number): boolean[][] => {
 
 
 const App = () => {
-  const [boolMatrix, setBoolMatrix] = useState(createMatrix(36, 54));
+  const defaultMatrix = createMatrix(36, 54);
+
+  const [boolMatrix, setBoolMatrix] = useState(defaultMatrix);
+  const [isClockOn, setIsClockOn] = useState(true);
+  const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
+  const [ticksPassed, setTicksPassed] = useState(0);
 
 
   /* HELPER FUNCTIONS */
