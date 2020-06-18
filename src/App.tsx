@@ -29,9 +29,9 @@ const App = () => {
   const defaultMatrix = createMatrix(36, 54);
 
   const [boolMatrix, setBoolMatrix] = useState(defaultMatrix);
-  const [isClockOn, setIsClockOn] = useState(true);
-  const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
-  const [ticksPassed, setTicksPassed] = useState(0);
+  // const [isClockRunning, setIsClockRunning] = useState(false);
+  // const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
+  // const [ticksPassed, setTicksPassed] = useState(0);
 
 
   /* HELPER FUNCTIONS */
@@ -71,7 +71,7 @@ const App = () => {
     return false;
   }
 
-  const runTick = (): void => {
+  const runOneTick = (): void => {
     const newMatrix: boolean[][] = [];
 
     for (let row = 0; row < boolMatrix.length; row++) {
@@ -97,6 +97,10 @@ const App = () => {
     setBoolMatrix(newBoolMatrix);
   }
 
+  const startClock = () => {
+    console.log('start timer button pressed');
+  }
+
 
 
 
@@ -117,9 +121,9 @@ const App = () => {
   // console.log(board.evalNextNodeState([1, 1]) === true);
   // console.log(board.evalNextNodeState([4, 6]) === false);
   // console.log(board.matrix);
-  // board.runTick();
+  // board.runOneTick();
   // console.log(board.matrix);
-  // board.runTick();
+  // board.runOneTick();
   // console.log(board.matrix);
 
 
@@ -128,9 +132,15 @@ const App = () => {
       Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
       <button
         type='button'
-        onClick={runTick}
+        onClick={runOneTick}
       >
         Advance +1 Tick
+      </button>
+      <button
+        type='button'
+        onClick={startClock}
+      >
+        Run Time
       </button>
       <MatrixDisplay
         boolMatrix={boolMatrix}
