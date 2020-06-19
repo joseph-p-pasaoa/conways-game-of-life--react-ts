@@ -4,14 +4,21 @@ MatrixDisplay Component | Tribute to Conway's Game of Life
 */
 
 
+
+/* IMPORT */
 import React from 'react'
 
+
+
+/* TYPING */
 export interface Props {
   boolMatrix: boolean[][];
   handleClickCell(event: object): void;
 }
 
 
+
+/* COMPONENT */
 const MatrixDisplay = ({ boolMatrix, handleClickCell }: Props) => {
 
   let showMatrix = boolMatrix.map((propRow, propRowIndex) => {

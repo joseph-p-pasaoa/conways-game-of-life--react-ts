@@ -31,7 +31,7 @@ interface Array<T> {
 
 
 
-/* SIDEKICK CREATEMATRIX  */
+/* SIDEKICK FUNCTION CREATEMATRIX  */
 const createMatrix = (height: number, length: number): boolean[][] => {
   const output: boolean[][] = [];
   for (let row = 0; row < height; row++) {
@@ -43,7 +43,7 @@ const createMatrix = (height: number, length: number): boolean[][] => {
 
 
 
-/* APP */
+/* APP COMPONENT */
 const App = () => {
   const defaultMatrix = createMatrix(36, 54);
 
@@ -179,4 +179,6 @@ const App = () => {
 }
 
 
+
+/* EXPORT */
 export default App;
