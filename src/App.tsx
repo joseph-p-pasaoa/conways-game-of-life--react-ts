@@ -6,8 +6,6 @@ APP Component | Tribute to Conway's Game of Life
 
 
 /* TODOS
-- clock base
-- start/stop clock
 - connect interval input to clock
 - foresight coloration option (black = not going to die, red = going to die)
 - grid units customization
@@ -20,16 +18,20 @@ APP Component | Tribute to Conway's Game of Life
 /* IMPORTS */
 import React, { useState } from 'react';
 
+import useInterval from './customhooks/useInterval';
 import './App.scss';
 import MatrixDisplay from './components/MatrixDisplay';
 
 
 
-/* HELPER */
+/* TYPING */
 interface Array<T> {
   fill(value: T): Array<T>;
 }
 
+
+
+/* SIDEKICK CREATEMATRIX  */
 const createMatrix = (height: number, length: number): boolean[][] => {
   const output: boolean[][] = [];
   for (let row = 0; row < height; row++) {
@@ -40,16 +42,23 @@ const createMatrix = (height: number, length: number): boolean[][] => {
 }
 
 
+
+/* APP */
 const App = () => {
   const defaultMatrix = createMatrix(36, 54);
 
   const [boolMatrix, setBoolMatrix] = useState(defaultMatrix);
-  // const [isClockRunning, setIsClockRunning] = useState(false);
-  // const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
-  // const [ticksPassed, setTicksPassed] = useState(0);
+  const [isClockRunning, setIsClockRunning] = useState(false);
+  const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
+  const [ticksPassed, setTicksPassed] = useState(0);
+
+  useInterval(() => {
+    runOneTick();
+  }, isClockRunning ? tickInterval : null);
 
 
-  /* HELPER FUNCTIONS */
+
+  // HELPER FUNCTIONS
   const evalNeighbors = (inputCoordinates: [number, number]): number => {
     const [inputRow, inputCol] = inputCoordinates;
     let numOfAlive = 0;
@@ -101,10 +110,13 @@ const App = () => {
       newMatrix.push(newRow);
     }
 
+    setTicksPassed(ticksPassed + 1);
     setBoolMatrix(newMatrix);
   }
 
 
+
+  // EVENT HANDLERS
   const handleClickCell = (targetCoordinates: [number, number]) => {
     const [targetRow, targetCol] = targetCoordinates;
     const newBoolMatrix = [ ...boolMatrix ];
@@ -112,14 +124,13 @@ const App = () => {
     setBoolMatrix(newBoolMatrix);
   }
 
-  const startClock = () => {
-    console.log('start timer button pressed');
+  const handleToggleClock = () => {
+    setIsClockRunning(!isClockRunning);
   }
 
 
 
-
-  /* TESTING */
+  // ORIGINAL LOGIC TESTING
   // const board = new Board(5, 10);
   // board.toggleNode([0, 1]);
   // board.toggleNode([1, 1]);
@@ -142,6 +153,8 @@ const App = () => {
   // console.log(board.matrix);
 
 
+
+  // RETURN
   return (
     <div className="App">
       Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
@@ -153,7 +166,7 @@ const App = () => {
       </button>
       <button
         type='button'
-        onClick={startClock}
+        onClick={handleToggleClock}
       >
         Run Time
       </button>
