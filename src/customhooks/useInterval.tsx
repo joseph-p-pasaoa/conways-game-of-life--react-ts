@@ -1,6 +1,10 @@
 /*
 JOSEPH P. PASAOA
 useInterval Custom Hook | Tribute to Conway's Game of Life
+
+The code below was sourced mainly from Dan Abramov's blog post
+"Making setInterval Declarative with React Hooks,"
+found at: https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 */
 
 
