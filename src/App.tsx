@@ -19,9 +19,10 @@ APP Component | Tribute to Conway's Game of Life
 
 /* IMPORTS */
 import React, { useState } from 'react';
-import MatrixDisplay from './components/MatrixDisplay';
 
 import './App.scss';
+import MatrixDisplay from './components/MatrixDisplay';
+
 
 
 /* HELPER */
