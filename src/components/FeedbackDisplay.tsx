@@ -25,8 +25,8 @@ const FeedbackDisplay = (props: Props) => {
 
   return(
     <div className='status-display'>
-      <div><strong>Age:</strong> {ticksPassed}</div>
-      <div><strong>Clock:</strong> {isClockRunning ? 'RUNNING' : 'STOPPED'}</div>
+      <div><strong>Age:</strong> {ticksPassed} ticks</div>
+      <div><strong>Clock:</strong> {isClockRunning ? 'running' : 'stopped'}</div>
     </div>
   );
 }

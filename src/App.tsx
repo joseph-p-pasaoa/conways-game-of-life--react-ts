@@ -20,6 +20,8 @@ import React, { useState } from 'react';
 
 import useInterval from './customhooks/useInterval';
 import './App.scss';
+import Controls from './components/Controls';
+import FeedbackDisplay from './components/FeedbackDisplay';
 import MatrixDisplay from './components/MatrixDisplay';
 
 
@@ -158,18 +160,14 @@ const App = () => {
   return (
     <div className="App">
       Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
-      <button
-        type='button'
-        onClick={runOneTick}
-      >
-        Advance +1 Tick
-      </button>
-      <button
-        type='button'
-        onClick={handleToggleClock}
-      >
-        Run Time
-      </button>
+      <Controls
+        runOneTick={runOneTick}
+        handleToggleClock={handleToggleClock}
+      />
+      <FeedbackDisplay
+        isClockRunning={isClockRunning}
+        ticksPassed={ticksPassed}
+      />
       <MatrixDisplay
         boolMatrix={boolMatrix}
         handleClickCell={handleClickCell}
