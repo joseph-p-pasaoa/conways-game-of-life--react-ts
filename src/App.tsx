@@ -4,6 +4,20 @@ APP Component | Tribute to Conway's Game of Life
 */
 
 
+
+/* TODOS
+- clock base
+- start/stop clock
+- connect interval input to clock
+- foresight coloration option (black = not going to die, red = going to die)
+- grid units customization
+- grid size customization
+- draggable toggling of cells
+*/
+
+
+
+/* IMPORTS */
 import React, { useState } from 'react';
 import MatrixDisplay from './components/MatrixDisplay';
 
