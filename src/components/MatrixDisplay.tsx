@@ -8,6 +8,8 @@ MatrixDisplay Component | Tribute to Conway's Game of Life
 /* IMPORT */
 import React from 'react'
 
+import RowDisplay from './RowDisplay';
+
 
 
 /* TYPING */
@@ -21,26 +23,14 @@ export interface Props {
 /* COMPONENT */
 const MatrixDisplay = ({ boolMatrix, handleClickCell }: Props) => {
 
-  let showMatrix = boolMatrix.map((propRow, propRowIndex) => {
-      const displayRow = propRow.map((isCellAlive, propColIndex) => {
-          return(
-            <div
-              className={`cell${isCellAlive ? ' alive' : ''}`}
-              data-row={propRowIndex}
-              data-col={propColIndex}
-              onClick={(e) => {
-                  const targetRow = e.currentTarget.dataset.row;
-                  const targetCol = e.currentTarget.dataset.col;
-                  handleClickCell([ targetRow, targetCol ]);
-              }}
-              key={propRowIndex + propColIndex}
-            ></div>
-          );
-      })
+  let showMatrix = boolMatrix.map((boolRow, boolRowIndex) => {
       return(
-        <div className='row' key={propRowIndex}>
-          {displayRow}
-        </div>
+        <RowDisplay
+          key={boolRowIndex}
+          boolRowIndex={boolRowIndex}
+          boolRow={boolRow}
+          handleClickCell={handleClickCell}
+        />
       );
   });
 
