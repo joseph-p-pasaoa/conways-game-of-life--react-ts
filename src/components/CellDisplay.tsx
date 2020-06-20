@@ -15,14 +15,14 @@ export interface Props {
   isCellAlive: boolean;
   boolRowIndex: number;
   boolColIndex: number;
-  // handleClickCell(event: object): void;
+  handleClickCell(event: object): void;
 }
 
 
 
 /* COMPONENT */
 const MemoizedCellDisplay = memo(
-  function CellDisplay({ isCellAlive, boolRowIndex, boolColIndex /*, handleClickCell */ }: Props) {
+  function CellDisplay({ isCellAlive, boolRowIndex, boolColIndex, handleClickCell }: Props) {
     return(
       <div
         className={`cell${isCellAlive ? ' alive' : ''}`}
@@ -31,7 +31,7 @@ const MemoizedCellDisplay = memo(
         onClick={(e) => {
             const targetRow = e.currentTarget.dataset.row;
             const targetCol = e.currentTarget.dataset.col;
-            // handleClickCell([ targetRow, targetCol ]);
+            handleClickCell([ targetRow, targetCol ]);
         }}
       ></div>
     );

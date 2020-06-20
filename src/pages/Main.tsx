@@ -28,27 +28,15 @@ import MatrixDisplay from '../components/MatrixDisplay';
 
 
 /* TYPING */
-// interface Array<T> {
-//   fill(value: T): Array<T>;
-// }
-
-
-
-/* SIDEKICK FUNCTION CREATEMATRIX  */
-// const createMatrix = (height: number, length: number): boolean[][] => {
-//   const output: boolean[][] = [];
-//   for (let row = 0; row < height; row++) {
-//     const newRow: boolean[] = new Array<boolean>(length).fill(false);
-//     output.push(newRow);
-//   }
-//   return output;
-// }
+type BooleanMatrix = boolean[][];
+type Coordinates = [number, number];
 
 
 
 /* COMPONENT */
 const App = () => {
-  const [board, setBoard] = useState(new GameBoard(36, 54));
+  const [board, setBoard] = useState(new GameBoard());
+  const [reload, setReload] = useState(0);
   // const [isClockRunning, setIsClockRunning] = useState(false);
   // const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
   // const [ticksPassed, setTicksPassed] = useState(0);
@@ -59,12 +47,10 @@ const App = () => {
 
 
   // EVENT HANDLERS
-  // const handleClickCell = (targetCoordinates: [number, number]) => {
-  //   const [targetRow, targetCol] = targetCoordinates;
-  //   const newBoolMatrix = [ ...boolMatrix ];
-  //   newBoolMatrix[targetRow][targetCol] = !newBoolMatrix[targetRow][targetCol];
-  //   setBoolMatrix(newBoolMatrix);
-  // }
+  const handleClickCell = (targetCoordinates: Coordinates) => {
+    board.toggleCell(targetCoordinates);
+    setReload(reload + 1);
+  }
 
   // const handleToggleClock = () => {
   //   setIsClockRunning(!isClockRunning);
@@ -86,7 +72,7 @@ const App = () => {
       /> */}
       <MatrixDisplay
         boolMatrix={board.boolMatrix}
-        // handleClickCell={handleClickCell}
+        handleClickCell={handleClickCell}
       />
     </div>
   );

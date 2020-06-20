@@ -16,14 +16,14 @@ import CellDisplay from './CellDisplay';
 export interface Props {
   boolRowIndex: number;
   boolRow: boolean[];
-  // handleClickCell(event: object): void;
+  handleClickCell(event: object): void;
 }
 
 
 
 /* COMPONENT */
 const MemoizedRowDisplay = memo(
-  function RowDisplay({ boolRowIndex, boolRow /*, handleClickCell */ }: Props) {
+  function RowDisplay({ boolRowIndex, boolRow, handleClickCell }: Props) {
     const displayRow = boolRow.map((isCellAlive, boolColIndex) => {
         return(
           <CellDisplay
@@ -31,7 +31,7 @@ const MemoizedRowDisplay = memo(
             isCellAlive={isCellAlive}
             boolRowIndex={boolRowIndex}
             boolColIndex={boolColIndex}
-            // handleClickCell={handleClickCell}
+            handleClickCell={handleClickCell}
           />
         );
     })

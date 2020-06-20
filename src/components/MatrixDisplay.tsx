@@ -13,15 +13,15 @@ import RowDisplay from './RowDisplay';
 
 
 /* TYPING */
-export interface Props {
+interface Props {
   boolMatrix: boolean[][];
-  // handleClickCell(event: object): void;
+  handleClickCell(event: object): void;
 }
 
 
 
 /* COMPONENT */
-const MatrixDisplay = ({ boolMatrix /*, handleClickCell */ }: Props) => {
+const MatrixDisplay = ({ boolMatrix, handleClickCell }: Props) => {
 
   let showMatrix = boolMatrix.map((boolRow, boolRowIndex) => {
       return(
@@ -29,7 +29,7 @@ const MatrixDisplay = ({ boolMatrix /*, handleClickCell */ }: Props) => {
           key={boolRowIndex}
           boolRowIndex={boolRowIndex}
           boolRow={boolRow}
-          // handleClickCell={handleClickCell}
+          handleClickCell={handleClickCell}
         />
       );
   });
