@@ -12,6 +12,7 @@ import React from 'react'
 
 /* TYPING */
 export interface Props {
+  isClockRunning: boolean;
   runOneTick: () => void;
   handleToggleClock: () => void;
 }
@@ -20,7 +21,7 @@ export interface Props {
 
 /* COMPONENT */
 const Controls = (props: Props) => {
-  const { runOneTick, handleToggleClock } = props;
+  const { isClockRunning, runOneTick, handleToggleClock } = props;
 
 
   return(
@@ -35,7 +36,7 @@ const Controls = (props: Props) => {
         type='button'
         onClick={handleToggleClock}
       >
-        Start/Stop Clock
+        {isClockRunning ? 'Stop Clock' : 'Start Clock'}
       </button>
 
     </div>
