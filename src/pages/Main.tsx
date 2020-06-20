@@ -23,7 +23,7 @@ import GameBoard from '../classes/GameBoard';
 import '../App.scss';
 // import Controls from '../components/Controls';
 // import FeedbackDisplay from '../components/FeedbackDisplay';
-// import MatrixDisplay from '../components/MatrixDisplay';
+import MatrixDisplay from '../components/MatrixDisplay';
 
 
 
@@ -48,7 +48,7 @@ import '../App.scss';
 
 /* COMPONENT */
 const App = () => {
-  const [boolMatrix, setBoolMatrix] = useState(new GameBoard(36, 54));
+  const [board, setBoard] = useState(new GameBoard(36, 54));
   // const [isClockRunning, setIsClockRunning] = useState(false);
   // const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
   // const [ticksPassed, setTicksPassed] = useState(0);
@@ -84,10 +84,10 @@ const App = () => {
         isClockRunning={isClockRunning}
         ticksPassed={ticksPassed}
       /> */}
-      {/* <MatrixDisplay
-        boolMatrix={boolMatrix}
-        handleClickCell={handleClickCell}
-      /> */}
+      <MatrixDisplay
+        boolMatrix={board.boolMatrix}
+        // handleClickCell={handleClickCell}
+      />
     </div>
   );
 }
