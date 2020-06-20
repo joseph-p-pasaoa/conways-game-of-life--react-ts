@@ -1,6 +1,6 @@
 /*
 JOSEPH P. PASAOA
-APP Component | Tribute to Conway's Game of Life
+Homepage Component | Tribute to Conway's Game of Life
 */
 
 
@@ -19,7 +19,7 @@ APP Component | Tribute to Conway's Game of Life
 import React, { useState } from 'react';
 
 import useInterval from './customhooks/useInterval';
-import './App.scss';
+import './Homepage.scss';
 import Controls from './components/Controls';
 import FeedbackDisplay from './components/FeedbackDisplay';
 import MatrixDisplay from './components/MatrixDisplay';
@@ -158,7 +158,7 @@ const App = () => {
 
   // RETURN
   return (
-    <div className="App">
+    <div className='Homepage'>
       Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
       <Controls
         runOneTick={runOneTick}
