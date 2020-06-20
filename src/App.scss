@@ -1,7 +1,21 @@
 /*
 JOSEPH P. PASAOA
-ROOT SCSS | Tribute to Conway's Game of Life
+ROOT (APP) SCSS | Tribute to Conway's Game of Life
 */
+
+
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('./assets/fonts/Abril_Fatface/AbrilFatface-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 /* ROOT & VARIABLES */
