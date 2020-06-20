@@ -85,7 +85,7 @@ body {
     background-color: #666;
 }
 
-.controls {
+.controls, .status-display {
     @include flex-striaght();
 }
 
