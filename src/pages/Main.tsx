@@ -79,18 +79,18 @@ const App = () => {
     return numOfAliveNeighbors;
   }
 
-  const evalNextCellState = (inputCoordinates: [number, number]): boolean => {
+  const evalCellNextStatus = (inputCoordinates: [number, number]): boolean => {
     const [inputRow, inputCol] = inputCoordinates;
     if (boolMatrix[inputRow] === undefined || boolMatrix[inputRow][inputCol] === undefined) {
       throw Error('out-of-bounds');
     }
-    const currentIsAlive = boolMatrix[inputRow][inputCol];
-    const numNeighbors = countAliveNeighbors([inputRow, inputCol]);
-    if (currentIsAlive) {
-      if (numNeighbors === 2 || numNeighbors === 3) {
+    const inputCellIsAlive = boolMatrix[inputRow][inputCol];
+    const numOfAliveNeighbors = countAliveNeighbors([inputRow, inputCol]);
+    if (inputCellIsAlive) {
+      if (numOfAliveNeighbors === 2 || numOfAliveNeighbors === 3) {
         return true;
       }
-    } else if (numNeighbors === 3) {
+    } else if (numOfAliveNeighbors === 3) {
       return true;
     }
     return false;
@@ -98,16 +98,13 @@ const App = () => {
 
   const runOneTick = (): void => {
     const newMatrix: boolean[][] = [];
-
     for (let row = 0; row < boolMatrix.length; row++) {
       const newRow: boolean[] = [];
-
       for (let col = 0; col < boolMatrix[row].length; col++) {
         const coordinates: [number, number] = [row, col];
-        const outcome = evalNextCellState(coordinates);
+        const outcome = evalCellNextStatus(coordinates);
         newRow.push(outcome);
       }
-
       newMatrix.push(newRow);
     }
 
@@ -144,9 +141,9 @@ const App = () => {
   // console.log(board.countAliveNeighbors([2, 3]) === 1);
   // console.log(board.countAliveNeighbors([1, 1]) === 3);
   // console.log(board.countAliveNeighbors([4, 6]) === 0);
-  // console.log(board.evalNextNodeState([2, 3]) === false);
-  // console.log(board.evalNextNodeState([1, 1]) === true);
-  // console.log(board.evalNextNodeState([4, 6]) === false);
+  // console.log(board.evalCellNextStatus([2, 3]) === false);
+  // console.log(board.evalCellNextStatus([1, 1]) === true);
+  // console.log(board.evalCellNextStatus([4, 6]) === false);
   // console.log(board.matrix);
   // board.runOneTick();
   // console.log(board.matrix);
