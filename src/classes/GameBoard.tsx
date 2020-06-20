@@ -4,14 +4,14 @@ GameBoard Class | Tribute to Conway's Game of Life
 */
 
 
-// interface Array<T> {
-//   fill(value: T): Array<T>;
-// }
+type BooleanMatrix = boolean[][];
+type Coordinates = [number, number];
 
 
 class GameBoard {
-  boolMatrix: boolean[][];
-  constructor(height: number, length: number) {
+  boolMatrix: BooleanMatrix;
+
+  constructor(height = 40, length = 40) {
     this.boolMatrix = [];
     for (let row = 0; row < height; row++) {
       const newRow: boolean[] = new Array<boolean>(length).fill(false);
@@ -20,15 +20,17 @@ class GameBoard {
   }
 
 
-  toggleCell = (targetCoordinates: [number, number]): void => {
+  toggleCell = (targetCoordinates: Coordinates) => {
     const { boolMatrix } = this;
     const [targetRow, targetCol] = targetCoordinates;
     boolMatrix[targetRow][targetCol] = !boolMatrix[targetRow][targetCol];
   }
 
-  evalCellNextStatus = (inputCoordinates: [number, number]): boolean => {
-    // Helper function
-    const countAliveNeighbors = (inputCoordinates: [number, number]): number => {
+  evalCellNextStatus = (inputCoordinates: Coordinates) => {
+    const { boolMatrix } = this;
+
+    // helper function: takes in cell coordinates and returns count of truthy neighbors
+    const countAliveNeighbors = (inputCoordinates: Coordinates) => {
       const [inputRow, inputCol] = inputCoordinates;
       let numOfAliveNeighbors = 0;
       for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
