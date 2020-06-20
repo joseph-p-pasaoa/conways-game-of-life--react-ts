@@ -18,11 +18,11 @@ Homepage Component | Tribute to Conway's Game of Life
 /* IMPORTS */
 import React, { useState } from 'react';
 
-import useInterval from './customhooks/useInterval';
-import './Homepage.scss';
-import Controls from './components/Controls';
-import FeedbackDisplay from './components/FeedbackDisplay';
-import MatrixDisplay from './components/MatrixDisplay';
+import useInterval from '../customhooks/useInterval';
+import '../App.scss';
+import Controls from '../components/Controls';
+import FeedbackDisplay from '../components/FeedbackDisplay';
+import MatrixDisplay from '../components/MatrixDisplay';
 
 
 
@@ -161,6 +161,7 @@ const App = () => {
     <div className='Homepage'>
       Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
       <Controls
+        isClockRunning={isClockRunning}
         runOneTick={runOneTick}
         handleToggleClock={handleToggleClock}
       />
