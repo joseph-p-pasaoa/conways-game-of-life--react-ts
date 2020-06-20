@@ -61,23 +61,22 @@ const App = () => {
 
 
   // HELPER FUNCTIONS
-  const evalNeighbors = (inputCoordinates: [number, number]): number => {
+  const countAliveNeighbors = (inputCoordinates: [number, number]): number => {
     const [inputRow, inputCol] = inputCoordinates;
-    let numOfAlive = 0;
-    for (let row = -1; row <= 1; row++) {
-      for (let col = -1; col <= 1; col++) {
-        const [currentRow, currentCol] =  [inputRow + row, inputCol + col];
-        if (row === 0 && col === 0) {
+    let numOfAliveNeighbors = 0;
+    for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
+      for (let colOffset = -1; colOffset <= 1; colOffset++) {
+        const [currentRow, currentCol] =  [inputRow + rowOffset, inputCol + colOffset];
+        if (rowOffset === 0 && colOffset === 0) {
           continue;
         }
         if (
           boolMatrix[currentRow] &&
-          boolMatrix[currentRow][currentCol] &&
-          boolMatrix[currentRow][currentCol] === true
-          ) numOfAlive += 1;
+          boolMatrix[currentRow][currentCol]
+          ) numOfAliveNeighbors += 1;
       }
     }
-    return numOfAlive;
+    return numOfAliveNeighbors;
   }
 
   const evalNextCellState = (inputCoordinates: [number, number]): boolean => {
@@ -86,7 +85,7 @@ const App = () => {
       throw Error('out-of-bounds');
     }
     const currentIsAlive = boolMatrix[inputRow][inputCol];
-    const numNeighbors = evalNeighbors([inputRow, inputCol]);
+    const numNeighbors = countAliveNeighbors([inputRow, inputCol]);
     if (currentIsAlive) {
       if (numNeighbors === 2 || numNeighbors === 3) {
         return true;
@@ -142,9 +141,9 @@ const App = () => {
   // board.toggleNode([2, 7]);
   // board.toggleNode([3, 7]);
   // board.toggleNode([3, 8]);
-  // console.log(board.evalNeighbors([2, 3]) === 1);
-  // console.log(board.evalNeighbors([1, 1]) === 3);
-  // console.log(board.evalNeighbors([4, 6]) === 0);
+  // console.log(board.countAliveNeighbors([2, 3]) === 1);
+  // console.log(board.countAliveNeighbors([1, 1]) === 3);
+  // console.log(board.countAliveNeighbors([4, 6]) === 0);
   // console.log(board.evalNextNodeState([2, 3]) === false);
   // console.log(board.evalNextNodeState([1, 1]) === true);
   // console.log(board.evalNextNodeState([4, 6]) === false);
