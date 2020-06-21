@@ -40,7 +40,9 @@ const MatrixDisplay = ({ boolMatrix, handleClickCell, reload }: Props) => {
       onClick={(e: any) => {                                      // DEV: figure out type
           const targetRow = parseInt(e.target.dataset.row);
           const targetCol = parseInt(e.target.dataset.col);
-          handleClickCell([ targetRow, targetCol ]);
+          if (!isNaN(targetRow) && !isNaN(targetCol)) {
+            handleClickCell([ targetRow, targetCol ]);
+          }
       }}
     >
       {showMatrix}
