@@ -2,9 +2,11 @@
 
 ## Developer: [Joseph P. Pasaoa](https://github.com/joseph-p-pasaoa)
 
-<!-- ![screenshot]() -->
+![screenshot](./static/20-0621-screencap.png)
 
-Built atop [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
+
+---
 
 ### Technologies Implemented
 + React
@@ -21,3 +23,7 @@ Built atop [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game
   $ npm start
   ```
 + The app site will be found at: http://localhost:11011
+
+---
+
+Dedicated to [John Conway](https://arstechnica.com/science/2020/04/john-conway-inventor-of-the-game-of-life-has-died-of-covid-19/), the mathematician who developed this automaton system and passed April 2020 at 82, from the Coronavirus. Rest in Peace.
