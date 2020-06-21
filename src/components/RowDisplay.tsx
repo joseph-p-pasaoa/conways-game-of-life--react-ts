@@ -4,12 +4,10 @@ RowDisplay Component | Tribute to Conway's Game of Life
 */
 
 
-
 /* IMPORT */
 import React, { memo } from 'react'
 
 import CellDisplay from './CellDisplay';
-
 
 
 /* TYPING */
@@ -17,14 +15,13 @@ type Coordinates = [number, number];
 interface Props {
   boolRowIndex: number;
   boolRow: boolean[];
-  handleClickCell(targetCoordinates: Coordinates): void;
+  reload: number; // prop reload passed here to trigger component reload on clicked cell
 }
-
 
 
 /* COMPONENT */
 const MemoizedRowDisplay = memo(
-  function RowDisplay({ boolRowIndex, boolRow, handleClickCell }: Props) {
+  function RowDisplay({ boolRowIndex, boolRow }: Props) {
     const displayRow = boolRow.map((isCellAlive, boolColIndex) => {
         return(
           <CellDisplay

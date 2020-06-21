@@ -30,18 +30,26 @@ const MatrixDisplay = ({ boolMatrix, handleClickCell }: Props) => {
           key={boolRowIndex}
           boolRowIndex={boolRowIndex}
           boolRow={boolRow}
-          handleClickCell={handleClickCell}
+          reload={reload}
         />
       );
   });
 
 
   return (
-    <div className='matrix'>
+    <div
+      className='matrix'
+      onClick={(e: any) => {                                      // DEV: figure out type
+          const targetRow = parseInt(e.target.dataset.row);
+          const targetCol = parseInt(e.target.dataset.col);
+          handleClickCell([ targetRow, targetCol ]);
+      }}
+    >
       {showMatrix}
     </div>
   )
 }
 
 
+/* EXPORT */
 export default MatrixDisplay;
