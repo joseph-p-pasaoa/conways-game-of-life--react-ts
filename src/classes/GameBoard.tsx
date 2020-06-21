@@ -21,9 +21,8 @@ class GameBoard {
 
 
   toggleCell = (targetCoordinates: Coordinates) => {
-    const { boolMatrix } = this;
     const [targetRow, targetCol] = targetCoordinates;
-    boolMatrix[targetRow][targetCol] = !boolMatrix[targetRow][targetCol];
+    this.boolMatrix[targetRow][targetCol] = !this.boolMatrix[targetRow][targetCol];
   }
 
   evalCellNextStatus = (inputCoordinates: Coordinates) => {
