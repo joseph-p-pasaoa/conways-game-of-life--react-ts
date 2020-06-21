@@ -36,9 +36,9 @@ type Coordinates = [number, number];
 const App = () => {
   const [board, setBoard] = useState(new GameBoard());
   const [reload, setReload] = useState(0);
-  // const [isClockRunning, setIsClockRunning] = useState(false);
   // const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
-  // const [ticksPassed, setTicksPassed] = useState(0);
+  const [ticksPassed, setTicksPassed] = useState(0);
+  // const [isClockRunning, setIsClockRunning] = useState(false);
 
   // useInterval(() => {
   //   runOneTick();

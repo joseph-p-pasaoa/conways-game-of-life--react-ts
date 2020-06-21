@@ -11,8 +11,8 @@ import React from 'react'
 
 
 /* TYPING */
-export interface Props {
-  isClockRunning: boolean;
+interface Props {
+  // isClockRunning: boolean;
   ticksPassed: number;
 }
 
@@ -20,13 +20,13 @@ export interface Props {
 
 /* COMPONENT */
 const FeedbackDisplay = (props: Props) => {
-  const { isClockRunning, ticksPassed } = props;
+  const { /* isClockRunning, */ ticksPassed } = props;
 
 
   return(
     <div className='status-display'>
       <div><strong>Age:</strong> {ticksPassed} ticks</div>
-      <div><strong>Clock:</strong> {isClockRunning ? 'running' : 'stopped'}</div>
+      {/* <div><strong>Clock:</strong> {isClockRunning ? 'running' : 'stopped'}</div> */}
     </div>
   );
 }
