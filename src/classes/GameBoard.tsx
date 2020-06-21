@@ -65,19 +65,19 @@ class GameBoard {
     return false;
   }
 
-  returnNextState = () => {
-    const { boolMatrix, evalCellNextStatus } = this;
+  advanceToNextBoardState = () => {
+    const { evalCellNextStatus } = this;
     const newMatrix: BooleanMatrix = [];
-    for (let buildRow = 0; buildRow < boolMatrix.length; buildRow++) {
+    for (let buildRow = 0; buildRow < this.boolMatrix.length; buildRow++) {
       const newRow: boolean[] = [];
-      for (let buildCol = 0; buildCol < boolMatrix[buildRow].length; buildCol++) {
+      for (let buildCol = 0; buildCol < this.boolMatrix[buildRow].length; buildCol++) {
         const currentCellCoordinates: Coordinates = [buildRow, buildCol];
         const cellNextStatus = evalCellNextStatus(currentCellCoordinates);
         newRow.push(cellNextStatus);
       }
       newMatrix.push(newRow);
     }
-    return [...newMatrix];
+    this.boolMatrix = [...newMatrix];
   }
 }
 
