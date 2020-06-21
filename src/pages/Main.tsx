@@ -19,8 +19,8 @@ MAIN Component | Tribute to Conway's Game of Life
 import React, { useState, useEffect } from 'react';
 
 import GameBoard from '../classes/GameBoard';
-// import useInterval from '../customhooks/useInterval';
 import '../App.scss';
+import Header from '../components/Header';
 import Controls from '../components/Controls';
 import FeedbackDisplay from '../components/FeedbackDisplay';
 import MatrixDisplay from '../components/MatrixDisplay';
@@ -51,10 +51,6 @@ const App = () => {
     return () => clearInterval(clock);
   }, [board, isClockRunning, ticksPassed, tickInterval]);
 
-  // useInterval(() => {
-  //   runOneTick();
-  // }, isClockRunning ? tickInterval : null);
-
 
   // EVENT HANDLERS
   const handleClickCell = (targetCoordinates: Coordinates) => {
@@ -74,17 +70,19 @@ const App = () => {
 
   // RETURN
   return (
-    <div className='Homepage'>
-      Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
-      <Controls
-        isClockRunning={isClockRunning}
-        handleClickAdvanceOneTick={handleClickAdvanceOneTick}
-        handleToggleClock={handleToggleClock}
-      />
-      <FeedbackDisplay
-        isClockRunning={isClockRunning}
-        ticksPassed={ticksPassed}
-      />
+    <div className='Main'>
+      <div className='sidebar'>
+        <Header />
+        <Controls
+          isClockRunning={isClockRunning}
+          handleClickAdvanceOneTick={handleClickAdvanceOneTick}
+          handleToggleClock={handleToggleClock}
+        />
+        <FeedbackDisplay
+          isClockRunning={isClockRunning}
+          ticksPassed={ticksPassed}
+        />
+      </div>
       <MatrixDisplay
         boolMatrix={board.boolMatrix}
         handleClickCell={handleClickCell}

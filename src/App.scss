@@ -82,11 +82,86 @@ strong, b {
 /* MAIN */
 body {
     color: #f5f5f5;
-    background-color: #666;
+    background-color: #102e52;
 }
 
-.controls, .status-display {
-    @include flex-striaght();
+a {
+    &:link, &:visited {
+        color: #ea8e00;
+        text-decoration: none;
+        transition: color .4s ease-out;
+    }
+    &:hover, &:active {
+        color: #37e5f7;
+    }
+}
+
+.Main {
+    @include flex-striaght(row);
+}
+
+.header, .controls, .status-display {
+    margin: 0 1rem;
+}
+
+h1.title, h2.title--sub {
+    font-family: var(--ff-accent);
+    font-weight: 400;
+}
+
+h1.title {
+    margin-top: 2rem;
+    margin-bottom: 0;
+
+    font-size: 3rem;
+}
+
+h2.title--sub {
+    font-size: 1.6rem;
+}
+
+h3.developer {
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.controls {
+    @include flex-striaght(row);
+
+    margin-top: 2rem;
+
+    * + * {
+        margin-left: .8rem;
+    }
+}
+
+.clocktoggle {
+    color: green;
+    &.running {
+        color: red;
+    }
+}
+
+.status-display {
+    @include flex-striaght(column);
+
+    margin-top: 1.6rem;
+    line-height: 1.6rem;
+}
+
+button {
+    position: relative;
+    padding: .3rem .95rem;
+    border-radius: 1.5rem;
+    outline: none;
+    transition: background-color .1s ease-out;
+
+    &:active {
+        top: 1px;
+        left: 1px;
+        border-style: outset;
+        background-color: #37e5f7;
+    }
 }
 
 .matrix {
