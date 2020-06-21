@@ -12,7 +12,7 @@ import React from 'react'
 
 /* TYPING */
 interface Props {
-  // isClockRunning: boolean;
+  isClockRunning: boolean;
   ticksPassed: number;
 }
 
@@ -20,13 +20,13 @@ interface Props {
 
 /* COMPONENT */
 const FeedbackDisplay = (props: Props) => {
-  const { /* isClockRunning, */ ticksPassed } = props;
+  const { isClockRunning, ticksPassed } = props;
 
 
   return(
     <div className='status-display'>
       <div><strong>Age:</strong> {ticksPassed} ticks</div>
-      {/* <div><strong>Clock:</strong> {isClockRunning ? 'running' : 'stopped'}</div> */}
+      <div><strong>Clock:</strong> {isClockRunning ? 'running' : 'stopped'}</div>
     </div>
   );
 }

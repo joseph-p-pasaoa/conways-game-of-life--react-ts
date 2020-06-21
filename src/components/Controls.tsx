@@ -12,16 +12,16 @@ import React from 'react'
 
 /* TYPING */
 interface Props {
-  // isClockRunning: boolean;
+  isClockRunning: boolean;
   handleClickAdvanceOneTick: () => void;
-  // handleToggleClock: () => void;
+  handleToggleClock: () => void;
 }
 
 
 
 /* COMPONENT */
 const Controls = (props: Props) => {
-  const { /* isClockRunning, */ handleClickAdvanceOneTick /*, handleToggleClock */ } = props;
+  const { isClockRunning, handleClickAdvanceOneTick, handleToggleClock } = props;
 
 
   return(
@@ -32,13 +32,12 @@ const Controls = (props: Props) => {
       >
         Advance +1 Tick
       </button>
-      {/* <button
+      <button
         type='button'
         onClick={handleToggleClock}
       >
         {isClockRunning ? 'Stop Clock' : 'Start Clock'}
-      </button> */}
-
+      </button>
     </div>
   );
 }
