@@ -24,6 +24,13 @@ An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conwa
   ```
 + The app site will be found at: http://localhost:11011
 
+### To Dos
+- Input field to customize clock interval
+- Foresight coloration option (for e.g., black = not going to die, red = going to die)
+- Grid units customization
+- Grid size customization
+- Draggable toggling of cells
+
 ---
 
 Dedicated to [John Conway](https://arstechnica.com/science/2020/04/john-conway-inventor-of-the-game-of-life-has-died-of-covid-19/), the mathematician who developed this automaton system and passed April 2020 at 82, from the Coronavirus. Rest in Peace.
