@@ -7,10 +7,12 @@ MAIN Component | Tribute to Conway's Game of Life
 
 /* TODOS
 - connect interval input to clock
+- randomize new grid operation
 - foresight coloration option (black = not going to die, red = going to die)
 - grid units customization
 - grid size customization
 - draggable toggling of cells
+- visualizations of stats like deaths, births
 */
 
 

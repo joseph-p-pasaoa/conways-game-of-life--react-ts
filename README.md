@@ -29,7 +29,10 @@ An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conwa
 - Foresight coloration option (for e.g., black = not going to die, red = going to die)
 - Grid units customization
 - Grid size customization
+- Generate random new grid
 - Draggable toggling of cells
+- Stats
+- Stat Visualizations
 
 ---
 
