@@ -11,11 +11,12 @@ import React, { memo } from 'react'
 
 
 /* TYPING */
-export interface Props {
+type Coordinates = [number, number];
+interface Props {
   isCellAlive: boolean;
   boolRowIndex: number;
   boolColIndex: number;
-  handleClickCell(event: object): void;
+  handleClickCell(targetCoordinates: Coordinates): void;
 }
 
 
@@ -28,9 +29,9 @@ const MemoizedCellDisplay = memo(
         className={`cell${isCellAlive ? ' alive' : ''}`}
         data-row={boolRowIndex}
         data-col={boolColIndex}
-        onClick={(e) => {
-            const targetRow = e.currentTarget.dataset.row;
-            const targetCol = e.currentTarget.dataset.col;
+        onClick={(e: any) => {                                      // DEV: figure out type
+            const targetRow = parseInt(e.currentTarget.dataset.row);
+            const targetCol = parseInt(e.currentTarget.dataset.col);
             handleClickCell([ targetRow, targetCol ]);
         }}
       ></div>

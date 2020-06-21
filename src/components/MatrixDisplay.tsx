@@ -13,9 +13,10 @@ import RowDisplay from './RowDisplay';
 
 
 /* TYPING */
+type Coordinates = [number, number];
 interface Props {
   boolMatrix: boolean[][];
-  handleClickCell(event: object): void;
+  handleClickCell(targetCoordinates: Coordinates): void;
 }
 
 

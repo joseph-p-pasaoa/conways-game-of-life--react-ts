@@ -11,33 +11,33 @@ import React from 'react'
 
 
 /* TYPING */
-export interface Props {
-  isClockRunning: boolean;
-  runOneTick: () => void;
-  handleToggleClock: () => void;
+interface Props {
+  // isClockRunning: boolean;
+  handleClickAdvanceOneTick: () => void;
+  // handleToggleClock: () => void;
 }
 
 
 
 /* COMPONENT */
 const Controls = (props: Props) => {
-  const { isClockRunning, runOneTick, handleToggleClock } = props;
+  const { /* isClockRunning, */ handleClickAdvanceOneTick /*, handleToggleClock */ } = props;
 
 
   return(
     <div className='controls'>
       <button
         type='button'
-        onClick={runOneTick}
+        onClick={handleClickAdvanceOneTick}
       >
         Advance +1 Tick
       </button>
-      <button
+      {/* <button
         type='button'
         onClick={handleToggleClock}
       >
         {isClockRunning ? 'Stop Clock' : 'Start Clock'}
-      </button>
+      </button> */}
 
     </div>
   );

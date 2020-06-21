@@ -13,10 +13,11 @@ import CellDisplay from './CellDisplay';
 
 
 /* TYPING */
-export interface Props {
+type Coordinates = [number, number];
+interface Props {
   boolRowIndex: number;
   boolRow: boolean[];
-  handleClickCell(event: object): void;
+  handleClickCell(targetCoordinates: Coordinates): void;
 }
 
 

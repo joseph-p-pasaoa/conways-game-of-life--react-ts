@@ -21,14 +21,13 @@ import React, { useState } from 'react';
 import GameBoard from '../classes/GameBoard';
 // import useInterval from '../customhooks/useInterval';
 import '../App.scss';
-// import Controls from '../components/Controls';
-// import FeedbackDisplay from '../components/FeedbackDisplay';
+import Controls from '../components/Controls';
+import FeedbackDisplay from '../components/FeedbackDisplay';
 import MatrixDisplay from '../components/MatrixDisplay';
 
 
 
 /* TYPING */
-type BooleanMatrix = boolean[][];
 type Coordinates = [number, number];
 
 
@@ -61,15 +60,15 @@ const App = () => {
   return (
     <div className='Homepage'>
       Tribute to Conway's Game of Life. Developed by Joseph P. Pasaoa.<br />
-      {/* <Controls
-        isClockRunning={isClockRunning}
-        runOneTick={runOneTick}
-        handleToggleClock={handleToggleClock}
-      /> */}
-      {/* <FeedbackDisplay
-        isClockRunning={isClockRunning}
+      <Controls
+        // isClockRunning={isClockRunning}
+        handleClickAdvanceOneTick={handleClickAdvanceOneTick}
+        // handleToggleClock={handleToggleClock}
+      />
+      <FeedbackDisplay
+        // isClockRunning={isClockRunning}
         ticksPassed={ticksPassed}
-      /> */}
+      />
       <MatrixDisplay
         boolMatrix={board.boolMatrix}
         handleClickCell={handleClickCell}
