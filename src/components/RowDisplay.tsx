@@ -47,6 +47,5 @@ const MemoizedRowDisplay = memo(
 );
 
 
-
 /* EXPORT */
 export default MemoizedRowDisplay;
