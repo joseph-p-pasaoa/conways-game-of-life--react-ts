@@ -4,12 +4,10 @@ MatrixDisplay Component | Tribute to Conway's Game of Life
 */
 
 
-
 /* IMPORT */
 import React from 'react'
 
 import RowDisplay from './RowDisplay';
-
 
 
 /* TYPING */
@@ -17,12 +15,12 @@ type Coordinates = [number, number];
 interface Props {
   boolMatrix: boolean[][];
   handleClickCell(targetCoordinates: Coordinates): void;
+  reload: number;  // reload passed down to trigger component reload on clicked cell
 }
 
 
-
 /* COMPONENT */
-const MatrixDisplay = ({ boolMatrix, handleClickCell }: Props) => {
+const MatrixDisplay = ({ boolMatrix, handleClickCell, reload }: Props) => {
 
   let showMatrix = boolMatrix.map((boolRow, boolRowIndex) => {
       return(

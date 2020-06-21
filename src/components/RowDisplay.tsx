@@ -29,7 +29,6 @@ const MemoizedRowDisplay = memo(
             isCellAlive={isCellAlive}
             boolRowIndex={boolRowIndex}
             boolColIndex={boolColIndex}
-            handleClickCell={handleClickCell}
           />
         );
     })

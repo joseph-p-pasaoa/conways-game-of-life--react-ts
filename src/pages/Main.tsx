@@ -86,6 +86,7 @@ const App = () => {
       <MatrixDisplay
         boolMatrix={board.boolMatrix}
         handleClickCell={handleClickCell}
+        reload={reload}
       />
     </div>
   );
