@@ -51,6 +51,11 @@ const App = () => {
     setReload(reload + 1);
   }
 
+  const handleClickAdvanceOneTick = () => {
+    board.advanceToNextBoardState();
+    setTicksPassed(ticksPassed + 1);
+  }
+
   // const handleToggleClock = () => {
   //   setIsClockRunning(!isClockRunning);
   // }
