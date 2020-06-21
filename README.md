@@ -1,6 +1,6 @@
 # Conway's Game of Life: A Tribute
 
-## Developer: [Joseph P. Pasaoa](https://github.com/joseph-p-pasaoa)
+## Developer: [Joseph P. Pasaoa](https://github.com/joseph-p-pasaoa) - [(LI)](https://www.linkedin.com/in/josephpasaoa)
 
 ![screenshot](./static/20-0621-screencap.png)
 
