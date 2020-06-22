@@ -129,7 +129,7 @@ h3.developer {
 }
 
 .controls {
-    @include flex-striaght(row);
+    @include flex-striaght(row, flex-start, flex-end);
 
     margin-top: 2rem;
 
@@ -166,6 +166,14 @@ button {
         border-style: outset;
         background-color: #37e5f7;
     }
+}
+
+.textinput--tickinterval {
+    position: relative;
+    top: -1px;
+    width: 6rem;
+    padding: .3rem .7rem;
+    border-radius: .4rem;
 }
 
 .matrix {
