@@ -18,7 +18,7 @@ MAIN Component | Tribute to Conway's Game of Life
 
 
 /* IMPORTS */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 
 import GameBoard from '../classes/GameBoard';
 import '../App.scss';
@@ -69,6 +69,10 @@ const App = () => {
     setIsClockRunning(!isClockRunning);
   }
 
+  const handleChangeTickInterval = (event: ChangeEvent<HTMLInputElement>) => {
+    setTickInterval(parseInt(event.target.value));
+  }
+
 
   // RETURN
   return (
@@ -77,6 +81,8 @@ const App = () => {
         <Header />
         <Controls
           isClockRunning={isClockRunning}
+          tickInterval={tickInterval}
+          handleChangeTickInterval={handleChangeTickInterval}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}
         />
