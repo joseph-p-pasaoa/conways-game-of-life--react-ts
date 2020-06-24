@@ -11,9 +11,9 @@ type Coordinates = [number, number];
 class GameBoard {
   boolMatrix: BooleanMatrix;
 
-  constructor(percentOfTrueInput = 0, height = 40, length = 40) {
+  constructor(aliveProbabilityPercent = 0, height = 40, length = 40) {
     this.boolMatrix = [];
-    if (percentOfTrueInput === 0) {
+    if (aliveProbabilityPercent === 0) {
       for (let buildRow = 0; buildRow < height; buildRow++) {
         const newFalseRow = new Array<boolean>(length).fill(false);
         this.boolMatrix.push(newFalseRow);
@@ -23,7 +23,7 @@ class GameBoard {
         const newRow: boolean[] = [];
         for (let buildCol = 0; buildCol < length; buildCol++) {
           const randomPointer = Math.ceil(Math.random() * 100 + 1);
-          newRow.push(randomPointer <= percentOfTrueInput ? true : false);
+          newRow.push(randomPointer <= aliveProbabilityPercent ? true : false);
         }
         this.boolMatrix.push(newRow);
       }
