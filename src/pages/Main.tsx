@@ -5,19 +5,6 @@ MAIN Component | Tribute to Conway's Game of Life
 
 
 
-/* TODOS
-- randomize new grid operation
-- foresight coloration option (black = not going to die, red = going to die)
-- grid units customization
-- grid size customization
-- remove interval tick display by combining with interval change input box to display actual when off-focused
-- draggable toggling of cells
-- visualizations of stats like deaths, births
-*/
-
-
-
-
 /* IMPORTS */
 import React, { useState, useEffect } from 'react';
 
@@ -74,11 +61,10 @@ const Main = () => {
     setActualTickInterval(milliseconds);
   }
 
-  const tempSetBoard = () => {
-    setBoard(board);
+  const handleGenNewRandomizedPopulation = () => {
+    setBoard(new GameBoard(22));  // DEV hardcode random true to 22% for now. todo input for random percent
   }
 
-  console.log(tempSetBoard);
 
   // RETURN
   return (
@@ -87,6 +73,7 @@ const Main = () => {
         <Header />
         <Controls
           isClockRunning={isClockRunning}
+          handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
           handleSetTickInterval={handleSetTickInterval}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}
