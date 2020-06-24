@@ -64,18 +64,23 @@ class GameBoard {
     return false;
   }
 
-  advanceToNextBoardState = () => {
-    const { evalCellNextStatus } = this;
+  buildNewMatrixHelper = (cb: (coords: Coordinates) => boolean) => {
     const newMatrix: BooleanMatrix = [];
     for (let buildRow = 0; buildRow < this.boolMatrix.length; buildRow++) {
       const newRow: boolean[] = [];
       for (let buildCol = 0; buildCol < this.boolMatrix[buildRow].length; buildCol++) {
         const currentCellCoordinates: Coordinates = [buildRow, buildCol];
-        const cellNextStatus = evalCellNextStatus(currentCellCoordinates);
+        const cellNextStatus = cb(currentCellCoordinates);
         newRow.push(cellNextStatus);
       }
       newMatrix.push(newRow);
     }
+    return newMatrix;
+  }
+
+  advanceToNextBoardState = () => {
+    const { buildNewMatrixHelper, evalCellNextStatus } = this;
+    const newMatrix = buildNewMatrixHelper(evalCellNextStatus);
     this.boolMatrix = [...newMatrix];
   }
 }
