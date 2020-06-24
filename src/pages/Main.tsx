@@ -61,6 +61,10 @@ const Main = () => {
     setActualTickInterval(milliseconds);
   }
 
+  const handleGenNewRandomizedPopulation = () => {
+    setBoard(new GameBoard(22));  // DEV hardcode random true to 22% for now. todo input for random percent
+  }
+
 
   // RETURN
   return (
@@ -69,6 +73,7 @@ const Main = () => {
         <Header />
         <Controls
           isClockRunning={isClockRunning}
+          handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
           handleSetTickInterval={handleSetTickInterval}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}

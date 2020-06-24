@@ -13,6 +13,7 @@ import React, { useState, ChangeEvent } from 'react'
 /* TYPING */
 interface Props {
   isClockRunning: boolean;
+  handleGenNewRandomizedPopulation: () => void;
   handleSetTickInterval: (milliseconds: number) => void;
   handleClickAdvanceOneTick: () => void;
   handleToggleClock: () => void;
@@ -24,6 +25,7 @@ interface Props {
 const Controls = (props: Props) => {
   const {
     isClockRunning,
+    handleGenNewRandomizedPopulation,
     handleSetTickInterval,
     handleClickAdvanceOneTick,
     handleToggleClock
@@ -37,6 +39,12 @@ const Controls = (props: Props) => {
 
   return(
     <div className='controls'>
+      <button
+        type='button'
+        onClick={handleGenNewRandomizedPopulation}
+      >
+        New Random Population
+      </button>
       <button
         type='button'
         onClick={handleClickAdvanceOneTick}

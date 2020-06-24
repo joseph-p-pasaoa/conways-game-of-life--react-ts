@@ -11,11 +11,22 @@ type Coordinates = [number, number];
 class GameBoard {
   boolMatrix: BooleanMatrix;
 
-  constructor(height = 40, length = 40) {
+  constructor(percentOfTrueInput = 0, height = 40, length = 40) {
     this.boolMatrix = [];
-    for (let buildRow = 0; buildRow < height; buildRow++) {
-      const newFalseRow = new Array<boolean>(length).fill(false);
-      this.boolMatrix.push(newFalseRow);
+    if (percentOfTrueInput === 0) {
+      for (let buildRow = 0; buildRow < height; buildRow++) {
+        const newFalseRow = new Array<boolean>(length).fill(false);
+        this.boolMatrix.push(newFalseRow);
+      }
+    } else {
+      for (let buildRow = 0; buildRow < height; buildRow++) {
+        const newRow: boolean[] = [];
+        for (let buildCol = 0; buildCol < length; buildCol++) {
+          const randomPointer = Math.ceil(Math.random() * 100 + 1);
+          newRow.push(randomPointer <= percentOfTrueInput ? true : false);
+        }
+        this.boolMatrix.push(newRow);
+      }
     }
   }
 
