@@ -74,6 +74,11 @@ const Main = () => {
     setActualTickInterval(milliseconds);
   }
 
+  const tempSetBoard = () => {
+    setBoard(board);
+  }
+
+  console.log(tempSetBoard);
 
   // RETURN
   return (
