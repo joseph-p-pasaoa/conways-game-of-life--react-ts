@@ -129,13 +129,13 @@ h3.developer {
 }
 
 .controls {
-    @include flex-striaght(row, flex-start, flex-end);
+    @include flex-striaght(column, flex-start, flex-start);
 
     margin-top: 2rem;
 
-    * + * {
-        margin-left: .8rem;
-    }
+    // * + * {
+    //     margin-left: .8rem;
+    // }
 }
 
 .clocktoggle {
