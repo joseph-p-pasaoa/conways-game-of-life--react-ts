@@ -5,19 +5,6 @@ MAIN Component | Tribute to Conway's Game of Life
 
 
 
-/* TODOS
-- randomize new grid operation
-- foresight coloration option (black = not going to die, red = going to die)
-- grid units customization
-- grid size customization
-- remove interval tick display by combining with interval change input box to display actual when off-focused
-- draggable toggling of cells
-- visualizations of stats like deaths, births
-*/
-
-
-
-
 /* IMPORTS */
 import React, { useState, useEffect } from 'react';
 

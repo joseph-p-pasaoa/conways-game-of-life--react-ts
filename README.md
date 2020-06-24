@@ -25,14 +25,17 @@ An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conwa
 + The app site will be found at: http://localhost:11011
 
 ### To Dos
-- Input field to customize clock interval
+- Generate random new grid
+- Redux me
 - Foresight coloration option (for e.g., black = not going to die, red = going to die)
 - Grid units customization
 - Grid size customization
-- Generate random new grid
 - Draggable toggling of cells
 - Stats
 - Stat Visualizations
+- Remove interval tick display by combining with interval change input box to display actual when off-focused
+- Theme options
+- Brush sizes
 
 ---
 
