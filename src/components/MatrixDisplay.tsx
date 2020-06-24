@@ -5,7 +5,7 @@ MatrixDisplay Component | Tribute to Conway's Game of Life
 
 
 /* IMPORT */
-import React from 'react'
+import React from 'react';
 
 import RowDisplay from './RowDisplay';
 
