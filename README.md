@@ -25,9 +25,10 @@ An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conwa
 + The app site will be found at: http://localhost:11011
 
 ### To Dos
-- Generate random new grid
+- Input to select percentage of randomize living cells in new board
 - Redux me
 - Foresight coloration option (for e.g., black = not going to die, red = going to die)
+- Info Sidebar
 - Grid units customization
 - Grid size customization
 - Draggable toggling of cells
@@ -35,7 +36,7 @@ An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conwa
 - Stat Visualizations
 - Remove interval tick display by combining with interval change input box to display actual when off-focused
 - Theme options
-- Brush sizes
+- Brushes / templates
 
 ---
 
