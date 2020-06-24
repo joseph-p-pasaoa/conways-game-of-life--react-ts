@@ -6,19 +6,20 @@ MAIN Component | Tribute to Conway's Game of Life
 
 
 /* TODOS
-- connect interval input to clock
 - randomize new grid operation
 - foresight coloration option (black = not going to die, red = going to die)
 - grid units customization
 - grid size customization
+- remove interval tick display by combining with interval change input box to display actual when off-focused
 - draggable toggling of cells
 - visualizations of stats like deaths, births
 */
 
 
 
+
 /* IMPORTS */
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import GameBoard from '../classes/GameBoard';
 import '../App.scss';
@@ -35,23 +36,23 @@ type Coordinates = [number, number];
 
 
 /* COMPONENT */
-const App = () => {
+const Main = () => {
   const [board, setBoard] = useState(new GameBoard());
   const [reload, setReload] = useState(0);
-  const [tickInterval, setTickInterval] = useState(1000);  // number in milliseconds (ms)
+  const [actualTickInterval, setActualTickInterval] = useState(1000);  // number in milliseconds (ms)
   const [ticksPassed, setTicksPassed] = useState(0);
   const [isClockRunning, setIsClockRunning] = useState(false);
 
   useEffect(() => {
     let clock: NodeJS.Timer;
-    if (isClockRunning && tickInterval !== 0) {
+    if (isClockRunning && actualTickInterval !== 0) {
       clock = setInterval(() => {
         board.advanceToNextBoardState();
         setTicksPassed(ticksPassed + 1);
-      }, tickInterval);
+      }, actualTickInterval);
     }
     return () => clearInterval(clock);
-  }, [board, isClockRunning, ticksPassed, tickInterval]);
+  }, [board, isClockRunning, ticksPassed, actualTickInterval]);
 
 
   // EVENT HANDLERS
@@ -69,8 +70,8 @@ const App = () => {
     setIsClockRunning(!isClockRunning);
   }
 
-  const handleChangeTickInterval = (event: ChangeEvent<HTMLInputElement>) => {
-    setTickInterval(parseInt(event.target.value));
+  const handleSetTickInterval = (milliseconds: number) => {
+    setActualTickInterval(milliseconds);
   }
 
 
@@ -103,4 +104,4 @@ const App = () => {
 
 
 /* EXPORT */
-export default App;
+export default Main;
