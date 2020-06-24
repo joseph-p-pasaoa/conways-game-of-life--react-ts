@@ -82,13 +82,13 @@ const Main = () => {
         <Header />
         <Controls
           isClockRunning={isClockRunning}
-          tickInterval={tickInterval}
-          handleChangeTickInterval={handleChangeTickInterval}
+          handleSetTickInterval={handleSetTickInterval}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}
         />
         <FeedbackDisplay
           isClockRunning={isClockRunning}
+          actualTickInterval={actualTickInterval}
           ticksPassed={ticksPassed}
         />
       </div>
