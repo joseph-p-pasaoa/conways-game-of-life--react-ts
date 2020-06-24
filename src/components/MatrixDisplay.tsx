@@ -17,16 +17,15 @@ interface Props {
   handleClickCell(targetCoordinates: Coordinates): void;
   reload: number;  // reload passed down to trigger component reload on clicked cell
 }
-// interface CellClickData<T> extends HTMLAttributes<T> {
-//   row: string;
-//   col: string;
-// }
-// interface MatrixClickEventTarget extends EventTarget {
-//   dataset: CellClickData;
-// }
-// interface MatrixMouseEvent extends React.MouseEvent<HTMLElement> {
-//   target: MatrixClickEventTarget;
-// }
+interface MatrixMouseEventTarget extends EventTarget {
+  dataset: {
+    row: string;
+    col: string;
+  }
+}
+interface MatrixMouseEvent extends React.MouseEvent<HTMLInputElement> {
+  target: MatrixMouseEventTarget;
+}
 
 
 /* COMPONENT */
@@ -47,7 +46,7 @@ const MatrixDisplay = ({ boolMatrix, handleClickCell, reload }: Props) => {
   return (
     <div
       className='matrix'
-      onClick={(e: any) => {                                      // DEV: figure out type
+      onClick={(e: MatrixMouseEvent) => {
           const targetRow = parseInt(e.target.dataset.row);
           const targetCol = parseInt(e.target.dataset.col);
           if (!isNaN(targetRow) && !isNaN(targetCol)) {
