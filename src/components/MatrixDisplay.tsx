@@ -17,6 +17,16 @@ interface Props {
   handleClickCell(targetCoordinates: Coordinates): void;
   reload: number;  // reload passed down to trigger component reload on clicked cell
 }
+// interface CellClickData<T> extends HTMLAttributes<T> {
+//   row: string;
+//   col: string;
+// }
+// interface MatrixClickEventTarget extends EventTarget {
+//   dataset: CellClickData;
+// }
+// interface MatrixMouseEvent extends React.MouseEvent<HTMLElement> {
+//   target: MatrixClickEventTarget;
+// }
 
 
 /* COMPONENT */
