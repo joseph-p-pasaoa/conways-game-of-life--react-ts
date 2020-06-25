@@ -15,6 +15,7 @@ interface Props {
   isClockRunning: boolean;
   tickDuration: number;
   handleGenNewRandomizedPopulation: () => void;
+  handleGenNewBoard: () => void;
   handleChangeTickDuration: (event: ChangeEvent<HTMLInputElement>) => void;
   handleClickAdvanceOneTick: () => void;
   handleToggleClock: () => void;
@@ -28,6 +29,7 @@ const Controls = (props: Props) => {
     isClockRunning,
     tickDuration,
     handleGenNewRandomizedPopulation,
+    handleGenNewBoard,
     handleChangeTickDuration,
     handleClickAdvanceOneTick,
     handleToggleClock
@@ -44,12 +46,20 @@ const Controls = (props: Props) => {
 
   return(
     <div className='controls'>
-      <button
-        type='button'
-        onClick={handleGenNewRandomizedPopulation}
-      >
-        New Random Population
-      </button>
+      <div>
+        <button
+          type='button'
+          onClick={handleGenNewRandomizedPopulation}
+        >
+          New Random Population
+        </button>
+        <button
+          type='button'
+          onClick={handleGenNewBoard}
+        >
+          Reset Board
+        </button>
+      </div>
       <button
         type='button'
         onClick={handleClickAdvanceOneTick}
@@ -69,15 +79,6 @@ const Controls = (props: Props) => {
           className='tickduration__rangeinput'
         />
       </label>
-      {/* <button
-        type='submit'
-        onClick={() => {
-            if (tickdurationInput < 100) setTickdurationInput(100);
-            handleSetTickduration(tickIntervalInput);
-        }}
-      >
-        Set
-      </button> */}
       <button
         type='button'
         onClick={handleToggleClock}

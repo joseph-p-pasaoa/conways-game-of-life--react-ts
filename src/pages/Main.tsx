@@ -67,6 +67,11 @@ const Main = () => {
     setBoard(new GameBoard(22));  // DEV hardcode random true to 22% for now. todo input for random percent
   }
 
+  const handleGenNewBoard = () => {
+    setTicksPassed(0);
+    setBoard(new GameBoard());
+  }
+
 
   // RETURN
   return (
@@ -78,13 +83,13 @@ const Main = () => {
           isClockRunning={isClockRunning}
           tickDuration={tickDuration}
           handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
+          handleGenNewBoard={handleGenNewBoard}
           handleChangeTickDuration={handleChangeTickDuration}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}
         />
         <FeedbackDisplay
           isClockRunning={isClockRunning}
-          // actualTickInterval={actualTickInterval}
           ticksPassed={ticksPassed}
         />
       </div>
