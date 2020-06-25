@@ -32,9 +32,8 @@ An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conwa
 - Grid units customization
 - Grid size customization
 - Draggable toggling of cells
-- Stats
+- Stats <!-- alive, deaths, births, etc. -->
 - Stat Visualizations
-- Remove interval tick display by combining with interval change input box to display actual when off-focused
 - Theme options
 - Brushes / templates
 
