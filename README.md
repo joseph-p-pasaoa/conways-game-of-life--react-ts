@@ -2,7 +2,7 @@
 
 ## Developer: [Joseph P. Pasaoa](https://github.com/joseph-p-pasaoa) - [(LI)](https://www.linkedin.com/in/josephpasaoa)
 
-![screenshot](./static/20-0621-screencap.png)
+![screenshot](./static/20-0625-screencap.png)
 
 An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
