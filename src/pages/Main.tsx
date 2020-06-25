@@ -58,7 +58,9 @@ const Main = () => {
   }
 
   const handleSetTickInterval = (milliseconds: number) => {
-    setActualTickInterval(milliseconds);
+    if (isNaN(milliseconds) === true) return;
+    if (milliseconds < 100) setActualTickInterval(100);
+    else setActualTickInterval(milliseconds);
   }
 
   const handleGenNewRandomizedPopulation = () => {
