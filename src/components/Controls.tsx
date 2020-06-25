@@ -6,16 +6,16 @@ Controls Component | Tribute to Conway's Game of Life
 
 
 /* IMPORT */
-import React, { useState, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 
 
 
 /* TYPING */
 interface Props {
   isClockRunning: boolean;
-  actualTickInterval: number;
+  tickDuration: number;
   handleGenNewRandomizedPopulation: () => void;
-  handleSetTickInterval: (milliseconds: number) => void;
+  handleChangeTickDuration: (event: ChangeEvent<HTMLInputElement>) => void;
   handleClickAdvanceOneTick: () => void;
   handleToggleClock: () => void;
 }
@@ -26,19 +26,12 @@ interface Props {
 const Controls = (props: Props) => {
   const {
     isClockRunning,
-    actualTickInterval,
+    tickDuration,
     handleGenNewRandomizedPopulation,
-    handleSetTickInterval,
+    handleChangeTickDuration,
     handleClickAdvanceOneTick,
     handleToggleClock
   } = props;
-  const [isTickIntervalInputActive, setIsTickIntervalInputActive] = useState(false);
-  const [tickIntervalInput, setTickIntervalInput] = useState(1000);  // number in milliseconds (ms)
-
-  const handleChangeTickInterval = (event: ChangeEvent<HTMLInputElement>) => {
-    if (isNaN(parseInt(event.target.value))) setTickIntervalInput(0);
-    else setTickIntervalInput(parseInt(event.target.value));
-  }
 
 
   return(
@@ -55,28 +48,27 @@ const Controls = (props: Props) => {
       >
         Advance +1 Generation
       </button>
-      <label htmlFor='inputTickInterval' className='tickinterval__label'>
-        <div>Milliseconds per generation:</div>
+      <label htmlFor='inputTickDuration' className='tickduration__label'>
+        <div>Clock Speed</div>
         <input
-          id='inputTickInterval'
-          type='text'
-          value={isTickIntervalInputActive ? tickIntervalInput : actualTickInterval}
-          onFocus={() => setIsTickIntervalInputActive(true)}
-          onBlur={() => setTimeout(() => setIsTickIntervalInputActive(false), 150)}
-          onChange={handleChangeTickInterval}
-          className={`tickinterval__textinput ${isTickIntervalInputActive ? '' : 'highlight'}`}
+          id='inputTickDuration'
+          type='range'
+          value={tickDuration}
+          min={50}
+          max={3000}
+          onChange={handleChangeTickDuration}
+          className='tickduration__rangeinput'
         />
-        <span className={`tickinterval__msg ${isTickIntervalInputActive ? 'show' : ''}`}> <b>currently: {actualTickInterval}</b> (minimum is 100)</span>
       </label>
-      <button
+      {/* <button
         type='submit'
         onClick={() => {
-            if (tickIntervalInput < 100) setTickIntervalInput(100);
-            handleSetTickInterval(tickIntervalInput);
+            if (tickdurationInput < 100) setTickdurationInput(100);
+            handleSetTickduration(tickIntervalInput);
         }}
       >
         Set
-      </button>
+      </button> */}
       <button
         type='button'
         onClick={handleToggleClock}

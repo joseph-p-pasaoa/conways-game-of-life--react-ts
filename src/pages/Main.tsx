@@ -6,7 +6,7 @@ MAIN Component | Tribute to Conway's Game of Life
 
 
 /* IMPORTS */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 
 import GameBoard from '../classes/GameBoard';
 import '../App.scss';
@@ -27,20 +27,20 @@ type Coordinates = [number, number];
 const Main = () => {
   const [board, setBoard] = useState(new GameBoard());
   const [reload, setReload] = useState(0);
-  const [actualTickInterval, setActualTickInterval] = useState(1000);  // number in milliseconds (ms)
+  const [tickDuration, setTickDuration] = useState(1000);  // number in milliseconds (ms)
   const [ticksPassed, setTicksPassed] = useState(0);
   const [isClockRunning, setIsClockRunning] = useState(false);
 
   useEffect(() => {
     let clock: NodeJS.Timer;
-    if (isClockRunning && actualTickInterval !== 0) {
+    if (isClockRunning && tickDuration !== 0) {
       clock = setInterval(() => {
         board.advanceToNextBoardState();
         setTicksPassed(ticksPassed + 1);
-      }, actualTickInterval);
+      }, tickDuration);
     }
     return () => clearInterval(clock);
-  }, [board, isClockRunning, ticksPassed, actualTickInterval]);
+  }, [board, isClockRunning, ticksPassed, tickDuration]);
 
 
   // EVENT HANDLERS
@@ -58,10 +58,8 @@ const Main = () => {
     setIsClockRunning(!isClockRunning);
   }
 
-  const handleSetTickInterval = (milliseconds: number) => {
-    if (isNaN(milliseconds) === true) return;
-    if (milliseconds < 100) setActualTickInterval(100);
-    else setActualTickInterval(milliseconds);
+  const handleChangeTickDuration = (event: ChangeEvent<HTMLInputElement>) => {
+    setTickDuration(parseInt(event.target.value));
   }
 
   const handleGenNewRandomizedPopulation = () => {
@@ -78,9 +76,9 @@ const Main = () => {
         <Description />
         <Controls
           isClockRunning={isClockRunning}
-          actualTickInterval={actualTickInterval}
+          tickDuration={tickDuration}
           handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
-          handleSetTickInterval={handleSetTickInterval}
+          handleChangeTickDuration={handleChangeTickDuration}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}
         />
