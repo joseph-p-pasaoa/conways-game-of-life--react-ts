@@ -100,7 +100,7 @@ a {
     @include flex-striaght(row);
 }
 
-.header, .controls, .status-display {
+.header, .description, .controls, .status-display {
     margin: 0 1rem;
 }
 
@@ -126,6 +126,16 @@ h2.title--sub {
 h3.developer {
     display: inline-block;
     font-size: 1rem;
+}
+
+.description {
+    margin-top: 1.6rem;
+    font-size: .8rem;
+    line-height: 1.1rem;
+
+    p {
+        margin-bottom: .8rem;
+    }
 }
 
 .controls {
@@ -168,12 +178,27 @@ button {
     }
 }
 
-.textinput--tickinterval {
+.tickinterval__textinput {
     position: relative;
     top: -1px;
     width: 6rem;
     padding: .3rem .7rem;
     border-radius: .4rem;
+
+    &.highlight {
+        color: orange;
+    }
+}
+
+.tickinterval__msg {
+    opacity: 0;
+    transition: opacity .5s ease-out;
+
+    b {
+        color: orange;
+    }
+
+    &.show { opacity: 1; }
 }
 
 .matrix {
@@ -207,7 +232,7 @@ button {
         width: 100%;
         height: 100%;
 
-        transition: background-color .5s ease-out, outline .5s ease-out;
+        // transition: background-color .5s ease-out, outline .5s ease-out;
     }
 
     &:hover::after {

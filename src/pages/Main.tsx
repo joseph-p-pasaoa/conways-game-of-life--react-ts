@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 import GameBoard from '../classes/GameBoard';
 import '../App.scss';
 import Header from '../components/Header';
+import Description from '../components/Description';
 import Controls from '../components/Controls';
 import FeedbackDisplay from '../components/FeedbackDisplay';
 import MatrixDisplay from '../components/MatrixDisplay';
@@ -58,10 +59,13 @@ const Main = () => {
   }
 
   const handleSetTickInterval = (milliseconds: number) => {
-    setActualTickInterval(milliseconds);
+    if (isNaN(milliseconds) === true) return;
+    if (milliseconds < 100) setActualTickInterval(100);
+    else setActualTickInterval(milliseconds);
   }
 
   const handleGenNewRandomizedPopulation = () => {
+    setTicksPassed(0);
     setBoard(new GameBoard(22));  // DEV hardcode random true to 22% for now. todo input for random percent
   }
 
@@ -71,8 +75,10 @@ const Main = () => {
     <div className='Main'>
       <div className='sidebar'>
         <Header />
+        <Description />
         <Controls
           isClockRunning={isClockRunning}
+          actualTickInterval={actualTickInterval}
           handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
           handleSetTickInterval={handleSetTickInterval}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
@@ -80,7 +86,7 @@ const Main = () => {
         />
         <FeedbackDisplay
           isClockRunning={isClockRunning}
-          actualTickInterval={actualTickInterval}
+          // actualTickInterval={actualTickInterval}
           ticksPassed={ticksPassed}
         />
       </div>
