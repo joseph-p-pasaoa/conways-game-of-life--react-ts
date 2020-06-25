@@ -76,6 +76,7 @@ const Main = () => {
         <Header />
         <Controls
           isClockRunning={isClockRunning}
+          actualTickInterval={actualTickInterval}
           handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
           handleSetTickInterval={handleSetTickInterval}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
@@ -83,7 +84,7 @@ const Main = () => {
         />
         <FeedbackDisplay
           isClockRunning={isClockRunning}
-          actualTickInterval={actualTickInterval}
+          // actualTickInterval={actualTickInterval}
           ticksPassed={ticksPassed}
         />
       </div>
