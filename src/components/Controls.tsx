@@ -57,7 +57,7 @@ const Controls = (props: Props) => {
           type='button'
           onClick={handleGenNewBoard}
         >
-          New Empty Board
+          Reset Board
         </button>
       </div>
       <button
