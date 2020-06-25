@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 import GameBoard from '../classes/GameBoard';
 import '../App.scss';
 import Header from '../components/Header';
+import Description from '../components/Description';
 import Controls from '../components/Controls';
 import FeedbackDisplay from '../components/FeedbackDisplay';
 import MatrixDisplay from '../components/MatrixDisplay';
@@ -74,6 +75,7 @@ const Main = () => {
     <div className='Main'>
       <div className='sidebar'>
         <Header />
+        <Description />
         <Controls
           isClockRunning={isClockRunning}
           actualTickInterval={actualTickInterval}
