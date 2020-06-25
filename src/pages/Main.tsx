@@ -64,6 +64,7 @@ const Main = () => {
   }
 
   const handleGenNewRandomizedPopulation = () => {
+    setTicksPassed(0);
     setBoard(new GameBoard(22));  // DEV hardcode random true to 22% for now. todo input for random percent
   }
 
