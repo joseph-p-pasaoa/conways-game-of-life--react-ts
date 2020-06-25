@@ -100,7 +100,7 @@ a {
     @include flex-striaght(row);
 }
 
-.header, .controls, .status-display {
+.header, .description, .controls, .status-display {
     margin: 0 1rem;
 }
 
@@ -126,6 +126,16 @@ h2.title--sub {
 h3.developer {
     display: inline-block;
     font-size: 1rem;
+}
+
+.description {
+    margin-top: 1.6rem;
+    font-size: .8rem;
+    line-height: 1.1rem;
+
+    p {
+        margin-bottom: .8rem;
+    }
 }
 
 .controls {
