@@ -53,10 +53,10 @@ const Controls = (props: Props) => {
         type='button'
         onClick={handleClickAdvanceOneTick}
       >
-        Advance +1 Tick
+        Advance +1 Generation
       </button>
       <label htmlFor='inputTickInterval' className='tickinterval__label'>
-        <div>Milliseconds per tick:</div>
+        <div>Milliseconds per generation:</div>
         <input
           id='inputTickInterval'
           type='text'
@@ -82,7 +82,7 @@ const Controls = (props: Props) => {
         onClick={handleToggleClock}
         className={`clocktoggle ${isClockRunning ? 'running' : ''}`}
       >
-        {isClockRunning ? 'STOP Cycle' : 'RUN Cycle'}
+        {isClockRunning ? 'STOP Clock' : 'RUN Clock'}
       </button>
     </div>
   );
