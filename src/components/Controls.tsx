@@ -82,7 +82,7 @@ const Controls = (props: Props) => {
         onClick={handleToggleClock}
         className={`clocktoggle ${isClockRunning ? 'running' : ''}`}
       >
-        {isClockRunning ? 'STOP Clock' : 'START Clock'}
+        {isClockRunning ? 'STOP Cycle' : 'RUN Cycle'}
       </button>
     </div>
   );
