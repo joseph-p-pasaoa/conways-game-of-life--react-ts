@@ -4,13 +4,13 @@ GameBoard Class | Tribute to Conway's Game of Life
 */
 
 
-type cellStates = ('noLife' | 'willDie' | 'willRise' | 'livesOn');
-type BoolOrStateMatrix = (boolean | cellStates)[][];
+type cellStatuses = 'falseFalse' | 'falseTrue' | 'trueFalse' | 'trueTrue';
+type BoolOrStatusMatrix = (boolean | cellStatuses)[][];
 type Coordinates = [number, number];
 
 
 class GameBoard {
-  dataMatrix: BoolOrStateMatrix;
+  dataMatrix: BoolOrStatusMatrix;
 
   constructor(aliveProbabilityPercent = 0, height = 40, length = 40) {
     this.dataMatrix = [];
@@ -78,7 +78,7 @@ class GameBoard {
 
   advanceToNextBoardState = () => {
     const { evalCellNextStatus } = this;
-    const newMatrix: BoolOrStateMatrix = [];
+    const newMatrix: BoolOrStatusMatrix = [];
     for (let buildRow = 0; buildRow < this.dataMatrix.length; buildRow++) {
       const newRow: boolean[] = [];
       for (let buildCol = 0; buildCol < this.dataMatrix[buildRow].length; buildCol++) {
@@ -91,33 +91,34 @@ class GameBoard {
     this.dataMatrix = [...newMatrix];
   }
 
-  nextPredictiveState = () => {
+  switchToStatusMatrix = () => {
     const { evalCellNextStatus } = this;
-    const newMatrix: BoolOrStateMatrix = [];
+    const newStatusMatrix: BoolOrStatusMatrix = [];
     for (let buildRow = 0; buildRow < this.dataMatrix.length; buildRow++) {
-      const newRow: cellStates[] = [];
+      const newRow: cellStatuses[] = [];
       for (let buildCol = 0; buildCol < this.dataMatrix[buildRow].length; buildCol++) {
         const currentCellCoordinates: Coordinates = [buildRow, buildCol];
+        const cellCurrentStatus = this.dataMatrix[buildRow][buildCol];
+        // DEV: code in non-boolean conversion failsafe
         const cellNextStatus = evalCellNextStatus(currentCellCoordinates);
-        const currentCellStatus = this.dataMatrix[buildRow][buildCol];
-        if (currentCellStatus) {
-          newRow.push(cellNextStatus ? 'livesOn' : 'willDie');
+        if (cellCurrentStatus) {
+          newRow.push(cellNextStatus ? 'trueTrue' : 'trueFalse');
         } else /* currently dead */ {
-          newRow.push(cellNextStatus ? 'willRise' : 'noLife');
+          newRow.push(cellNextStatus ? 'falseTrue' : 'falseFalse');
         }
       }
-      newMatrix.push(newRow);
+      newStatusMatrix.push(newRow);
     }
-    this.dataMatrix = [...newMatrix];
+    this.dataMatrix = [...newStatusMatrix];
   }
 }
 
 
 /*
-false -> false  // noLife   \ -> false  // noLife
-true -> false   // willDie  / -> true   // willRise
-false -> true   // willRise \ -> false  // willDie
-true -> true    // livesOn  / -> true   // livesOn
+false -> false  // falseFalse   \ -> false  // falseFalse
+true -> false   // trueFalse  / -> true   // falseTrue
+false -> true   // falseTrue \ -> false  // trueFalse
+true -> true    // trueTrue  / -> true   // trueTrue
 
 */
 

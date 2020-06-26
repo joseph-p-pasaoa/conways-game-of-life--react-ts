@@ -12,10 +12,10 @@ import RowDisplay from './RowDisplay';
 
 /* TYPING */
 type Coordinates = [number, number];
-type cellStates = ('noLife' | 'willDie' | 'willRise' | 'livesOn');
-type BoolOrStateMatrix = (boolean | cellStates)[][];
+type cellStatuses = 'falseFalse' | 'falseTrue' | 'trueFalse' | 'trueTrue';
+type BoolOrStatusMatrix = (boolean | cellStatuses)[][];
 interface Props {
-  dataMatrix: BoolOrStateMatrix;
+  dataMatrix: BoolOrStatusMatrix;
   handleClickCell(targetCoordinates: Coordinates): void;
   reload: number;  // reload passed down to trigger component reload on clicked cell
 }

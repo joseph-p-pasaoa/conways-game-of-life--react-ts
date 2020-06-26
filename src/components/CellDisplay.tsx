@@ -9,10 +9,10 @@ import React, { memo } from 'react'
 
 
 /* TYPING */
-type cellStates = ('noLife' | 'willDie' | 'willRise' | 'livesOn');
-type BoolOrState = (boolean | cellStates);
+type cellStatuses = 'falseFalse' | 'falseTrue' | 'trueFalse' | 'trueTrue';
+type BoolOrStatus = (boolean | cellStatuses);
 interface Props {
-  cellBoolOrState: BoolOrState;
+  cellBoolOrStatus: BoolOrStatus;
   dataRowIndex: number;
   dataColIndex: number;
 }
@@ -20,10 +20,10 @@ interface Props {
 
 /* COMPONENT */
 const MemoizedCellDisplay = memo(
-  function CellDisplay({ cellBoolOrState, dataRowIndex, dataColIndex }: Props) {
-    let cellDivClass: '' | 'alive' | cellStates = '';
-    if (cellBoolOrState === true) cellDivClass = 'alive';
-    else if (cellBoolOrState !== false) cellDivClass = cellBoolOrState;
+  function CellDisplay({ cellBoolOrStatus, dataRowIndex, dataColIndex }: Props) {
+    let cellDivClass: '' | 'alive' | cellStatuses = '';
+    if (cellBoolOrStatus === true) cellDivClass = 'alive';
+    else if (cellBoolOrStatus !== false) cellDivClass = cellBoolOrStatus;
 
 
     return(
