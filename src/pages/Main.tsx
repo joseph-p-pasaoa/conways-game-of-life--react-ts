@@ -30,6 +30,7 @@ const Main = () => {
   const [tickDuration, setTickDuration] = useState(1000);  // number in milliseconds (ms)
   const [ticksPassed, setTicksPassed] = useState(0);
   const [isClockRunning, setIsClockRunning] = useState(false);
+  const [isPredictiveOn, setIsPredictiveOn] = useState(false);
 
   useEffect(() => {
     let clock: NodeJS.Timer;
@@ -72,6 +73,10 @@ const Main = () => {
     setBoard(new GameBoard());
   }
 
+  const handleChangePredictiveToggle = () => {
+    setIsPredictiveOn(!isPredictiveOn);
+  }
+
 
   // RETURN
   return (
@@ -82,9 +87,11 @@ const Main = () => {
         <Controls
           isClockRunning={isClockRunning}
           tickDuration={tickDuration}
+          isPredictiveOn={isPredictiveOn}
           handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
           handleGenNewBoard={handleGenNewBoard}
           handleChangeTickDuration={handleChangeTickDuration}
+          handleChangePredictiveToggle={handleChangePredictiveToggle}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}
         />

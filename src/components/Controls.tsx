@@ -7,32 +7,59 @@ Controls Component | Tribute to Conway's Game of Life
 
 /* IMPORT */
 import React, { ChangeEvent } from 'react';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { withStyles } from '@material-ui/core/styles';
+import orange from "@material-ui/core/colors/orange";
 
 
 
 /* TYPING */
 interface Props {
+  classes: any;
   isClockRunning: boolean;
   tickDuration: number;
+  isPredictiveOn: boolean;
   handleGenNewRandomizedPopulation: () => void;
   handleGenNewBoard: () => void;
   handleChangeTickDuration: (event: ChangeEvent<HTMLInputElement>) => void;
   handleClickAdvanceOneTick: () => void;
   handleToggleClock: () => void;
+  handleChangePredictiveToggle: () => void;
 }
+
+
+
+/* MATERIAL-UI STYLES */
+const styles = (theme: any) => ({
+  colorSwitchBase: {
+    color: '#aaa',
+    "&$colorChecked": {
+      color: orange[500],
+      "& + $colorBar": {
+        backgroundColor: orange[500]
+      }
+    }
+  },
+  colorBar: {},
+  colorChecked: {}
+});
 
 
 
 /* COMPONENT */
 const Controls = (props: Props) => {
   const {
+    classes,
     isClockRunning,
     tickDuration,
+    isPredictiveOn,
     handleGenNewRandomizedPopulation,
     handleGenNewBoard,
     handleChangeTickDuration,
     handleClickAdvanceOneTick,
-    handleToggleClock
+    handleToggleClock,
+    handleChangePredictiveToggle
   } = props;
 
 
@@ -109,6 +136,20 @@ const Controls = (props: Props) => {
       >
         {isClockRunning ? 'STOP Clock' : 'RUN Clock'}
       </button>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={isPredictiveOn}
+            onChange={handleChangePredictiveToggle}
+            classes={{
+              switchBase: classes.colorSwitchBase,
+              checked: classes.colorChecked,
+              track: classes.colorBar,
+            }}
+          />
+        }
+        label='Predictive Coloring'
+      />
     </div>
   );
 }
@@ -116,4 +157,4 @@ const Controls = (props: Props) => {
 
 
 /* EXPORT */
-export default Controls;
+export default withStyles(styles)(Controls);
