@@ -75,9 +75,21 @@ const Controls = (props: Props) => {
           min={50}
           max={3000}
           step={50}
+          list='tickDurationDetents'
           onChange={handleChangeTickDuration}
           className='tickduration__rangeinput'
         />
+        <datalist id='tickDurationDetents'>
+          <option value='50' />
+          <option value='100' />
+          <option value='200' />
+          <option value='250' />
+          <option value='500' />
+          <option value='1000' />
+          <option value='1500' />
+          <option value='2000' />
+          <option value='3000' />
+        </datalist>
       </label>
       <button
         type='button'
