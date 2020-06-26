@@ -12,8 +12,10 @@ import RowDisplay from './RowDisplay';
 
 /* TYPING */
 type Coordinates = [number, number];
+type cellStates = ('noLife' | 'willDie' | 'willRise' | 'livesOn');
+type BoolOrStateMatrix = (boolean | cellStates)[][];
 interface Props {
-  boolMatrix: boolean[][];
+  dataMatrix: BoolOrStateMatrix;
   handleClickCell(targetCoordinates: Coordinates): void;
   reload: number;  // reload passed down to trigger component reload on clicked cell
 }
@@ -29,14 +31,14 @@ interface MatrixMouseEvent extends React.MouseEvent<HTMLInputElement> {
 
 
 /* COMPONENT */
-const MatrixDisplay = ({ boolMatrix, handleClickCell, reload }: Props) => {
+const MatrixDisplay = ({ dataMatrix, handleClickCell, reload }: Props) => {
 
-  let showMatrix = boolMatrix.map((boolRow, boolRowIndex) => {
+  let showMatrix = dataMatrix.map((dataRow, dataRowIndex) => {
       return(
         <RowDisplay
-          key={boolRowIndex}
-          boolRowIndex={boolRowIndex}
-          boolRow={boolRow}
+          key={dataRowIndex}
+          dataRowIndex={dataRowIndex}
+          dataRow={dataRow}
           reload={reload}
         />
       );
