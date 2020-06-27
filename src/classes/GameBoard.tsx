@@ -4,19 +4,23 @@ GameBoard Class | Tribute to Conway's Game of Life
 */
 
 
-type BooleanMatrix = boolean[][];
 type Coordinates = [number, number];
+type BoolMatrix = boolean[][];
+interface StatusObject {
+  boolMatrix: boolean[][];
+}
 
 
 class GameBoard {
-  boolMatrix: BooleanMatrix;
+  data: StatusObject;
 
   constructor(aliveProbabilityPercent = 0, height = 40, length = 40) {
-    this.boolMatrix = [];
+    this.data = { boolMatrix: [] };
+    let { boolMatrix } = this.data;
     if (aliveProbabilityPercent === 0) {
       for (let buildRow = 0; buildRow < height; buildRow++) {
         const newFalseRow = new Array<boolean>(length).fill(false);
-        this.boolMatrix.push(newFalseRow);
+        boolMatrix.push(newFalseRow);
       }
     } else {
       for (let buildRow = 0; buildRow < height; buildRow++) {
@@ -25,7 +29,7 @@ class GameBoard {
           const randomPointer = Math.ceil(Math.random() * 100 + 1);
           newRow.push(randomPointer <= aliveProbabilityPercent ? true : false);
         }
-        this.boolMatrix.push(newRow);
+        boolMatrix.push(newRow);
       }
     }
   }
@@ -33,11 +37,12 @@ class GameBoard {
 
   toggleCell = (targetCoordinates: Coordinates) => {
     const [targetRow, targetCol] = targetCoordinates;
-    this.boolMatrix[targetRow][targetCol] = !this.boolMatrix[targetRow][targetCol];
+    let { boolMatrix } = this.data;
+    boolMatrix[targetRow][targetCol] = !boolMatrix[targetRow][targetCol];
   }
 
   evalCellNextStatus = (inputCoordinates: Coordinates) => {
-    const { boolMatrix } = this;
+    const { boolMatrix } = this.data;
 
     // helper function: takes in cell coordinates and returns count of truthy neighbors
     const countAliveNeighbors = (inputCoordinates: Coordinates) => {
@@ -77,17 +82,17 @@ class GameBoard {
 
   advanceToNextBoardState = () => {
     const { evalCellNextStatus } = this;
-    const newMatrix: BooleanMatrix = [];
-    for (let buildRow = 0; buildRow < this.boolMatrix.length; buildRow++) {
+    const newMatrix: BoolMatrix = [];
+    for (let buildRow = 0; buildRow < this.data.boolMatrix.length; buildRow++) {
       const newRow: boolean[] = [];
-      for (let buildCol = 0; buildCol < this.boolMatrix[buildRow].length; buildCol++) {
+      for (let buildCol = 0; buildCol < this.data.boolMatrix[buildRow].length; buildCol++) {
         const currentCellCoordinates: Coordinates = [buildRow, buildCol];
         const cellNextStatus = evalCellNextStatus(currentCellCoordinates);
         newRow.push(cellNextStatus);
       }
       newMatrix.push(newRow);
     }
-    this.boolMatrix = [...newMatrix];
+    this.data.boolMatrix = [...newMatrix];
   }
 }
 
@@ -108,11 +113,11 @@ class GameBoard {
 // console.log(board.evalCellNextStatus([2, 3]) === false);
 // console.log(board.evalCellNextStatus([1, 1]) === true);
 // console.log(board.evalCellNextStatus([4, 6]) === false);
-// console.log(board.boolMatrix);
-// board.boolMatrix = board.returnNextState();
-// console.log(board.boolMatrix);
-// board.boolMatrix = board.returnNextState();
-// console.log(board.boolMatrix);
+// console.log(board.data);
+// board.data = board.returnNextState();
+// console.log(board.data);
+// board.data = board.returnNextState();
+// console.log(board.data);
 
 
 export default GameBoard;
