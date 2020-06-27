@@ -107,7 +107,7 @@ const Main = () => {
         />
       </div>
       <MatrixDisplay
-        dataMatrix={board.dataMatrix}
+        dataMatrix={board.data.boolMatrix}
         handleClickCell={handleClickCell}
         reload={reload}
       />

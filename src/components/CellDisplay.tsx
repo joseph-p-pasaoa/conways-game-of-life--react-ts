@@ -9,22 +9,21 @@ import React, { memo } from 'react'
 
 
 /* TYPING */
-type Coordinates = [number, number];
 interface Props {
-  isCellAlive: boolean;
-  boolRowIndex: number;
-  boolColIndex: number;
+  cellStatus: boolean;
+  dataRowIndex: number;
+  dataColIndex: number;
 }
 
 
 /* COMPONENT */
 const MemoizedCellDisplay = memo(
-  function CellDisplay({ isCellAlive, boolRowIndex, boolColIndex }: Props) {
+  function CellDisplay({ cellStatus, dataRowIndex, dataColIndex }: Props) {
     return(
       <div
-        className={`cell${isCellAlive ? ' alive' : ''}`}
-        data-row={boolRowIndex}
-        data-col={boolColIndex}
+        className={`cell${cellStatus ? ' alive' : ''}`}
+        data-row={dataRowIndex}
+        data-col={dataColIndex}
       ></div>
     );
   }
