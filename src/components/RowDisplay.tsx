@@ -11,25 +11,24 @@ import CellDisplay from './CellDisplay';
 
 
 /* TYPING */
-type cellStatuses = 'falseFalse' | 'falseTrue' | 'trueFalse' | 'trueTrue';
-type BoolOrStatus = (boolean | cellStatuses);
+type Coordinates = [number, number];
 interface Props {
-  dataRowIndex: number;
-  dataRow: BoolOrStatus[];
+  boolRowIndex: number;
+  boolRow: boolean[];
   reload: number; // prop reload passed here to trigger component reload on clicked cell
 }
 
 
 /* COMPONENT */
 const MemoizedRowDisplay = memo(
-  function RowDisplay({ dataRowIndex, dataRow }: Props) {
-    const displayRow = dataRow.map((cellBoolOrStatus, dataColIndex) => {
+  function RowDisplay({ boolRowIndex, boolRow }: Props) {
+    const displayRow = boolRow.map((isCellAlive, boolColIndex) => {
         return(
           <CellDisplay
-            key={dataRowIndex + dataColIndex}
-            cellBoolOrStatus={cellBoolOrStatus}
-            dataRowIndex={dataRowIndex}
-            dataColIndex={dataColIndex}
+            key={boolRowIndex + boolColIndex}
+            isCellAlive={isCellAlive}
+            boolRowIndex={boolRowIndex}
+            boolColIndex={boolColIndex}
           />
         );
     })
