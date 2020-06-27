@@ -30,7 +30,8 @@ const Main = () => {
   const [tickDuration, setTickDuration] = useState(1000);  // number in milliseconds (ms)
   const [ticksPassed, setTicksPassed] = useState(0);
   const [isClockRunning, setIsClockRunning] = useState(false);
-  const [isPredictiveOn, setIsPredictiveOn] = useState(false);
+  const [isForecastBirthsOn, setIsForecastBirthsOn] = useState(false);
+  const [isForecastDeathsOn, setIsForecastDeathsOn] = useState(false);
 
   useEffect(() => {
     let clock: NodeJS.Timer;
@@ -73,8 +74,11 @@ const Main = () => {
     setBoard(new GameBoard());
   }
 
-  const handleChangePredictiveToggle = () => {
-    setIsPredictiveOn(!isPredictiveOn);
+  const handleToggleForecastBirths = () => {
+    setIsForecastBirthsOn(!isForecastBirthsOn);
+  }
+  const handleToggleForecastDeaths = () => {
+    setIsForecastDeathsOn(!isForecastDeathsOn);
   }
 
 
@@ -87,11 +91,13 @@ const Main = () => {
         <Controls
           isClockRunning={isClockRunning}
           tickDuration={tickDuration}
-          isPredictiveOn={isPredictiveOn}
+          isForecastBirthsOn={isForecastBirthsOn}
+          isForecastDeathsOn={isForecastDeathsOn}
           handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
           handleGenNewBoard={handleGenNewBoard}
           handleChangeTickDuration={handleChangeTickDuration}
-          handleChangePredictiveToggle={handleChangePredictiveToggle}
+          handleToggleForecastBirths={handleToggleForecastBirths}
+          handleToggleForecastDeaths={handleToggleForecastDeaths}
           handleClickAdvanceOneTick={handleClickAdvanceOneTick}
           handleToggleClock={handleToggleClock}
         />

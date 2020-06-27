@@ -19,13 +19,15 @@ interface Props {
   classes: any;
   isClockRunning: boolean;
   tickDuration: number;
-  isPredictiveOn: boolean;
+  isForecastBirthsOn: boolean;
+  isForecastDeathsOn: boolean;
   handleGenNewRandomizedPopulation: () => void;
   handleGenNewBoard: () => void;
   handleChangeTickDuration: (event: ChangeEvent<HTMLInputElement>) => void;
   handleClickAdvanceOneTick: () => void;
   handleToggleClock: () => void;
-  handleChangePredictiveToggle: () => void;
+  handleToggleForecastBirths: () => void;
+  handleToggleForecastDeaths: () => void;
 }
 
 
@@ -53,13 +55,15 @@ const Controls = (props: Props) => {
     classes,
     isClockRunning,
     tickDuration,
-    isPredictiveOn,
+    isForecastBirthsOn,
+    isForecastDeathsOn,
     handleGenNewRandomizedPopulation,
     handleGenNewBoard,
     handleChangeTickDuration,
     handleClickAdvanceOneTick,
     handleToggleClock,
-    handleChangePredictiveToggle
+    handleToggleForecastBirths,
+    handleToggleForecastDeaths
   } = props;
 
 
@@ -139,8 +143,8 @@ const Controls = (props: Props) => {
       <FormControlLabel
         control={
           <Switch
-            checked={isPredictiveOn}
-            onChange={handleChangePredictiveToggle}
+            checked={isForecastBirthsOn}
+            onChange={handleToggleForecastBirths}
             classes={{
               switchBase: classes.colorSwitchBase,
               checked: classes.colorChecked,
@@ -148,7 +152,21 @@ const Controls = (props: Props) => {
             }}
           />
         }
-        label='Predictive Coloring'
+        label='Forecast Births'
+      />
+      <FormControlLabel
+        control={
+          <Switch
+            checked={isForecastDeathsOn}
+            onChange={handleToggleForecastDeaths}
+            classes={{
+              switchBase: classes.colorSwitchBase,
+              checked: classes.colorChecked,
+              track: classes.colorBar,
+            }}
+          />
+        }
+        label='Forecast Deaths'
       />
     </div>
   );
