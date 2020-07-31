@@ -12,7 +12,7 @@ interface StatusObject {
 
 
 class GameBoard {
-  data: StatusObject;
+   data: StatusObject;
 
    constructor(aliveProbabilityPercent = 0, height = 40, length = 40) {
       this.data = { boolMatrix: [] };
@@ -32,78 +32,68 @@ class GameBoard {
             boolMatrix.push(newRow);
          }
       }
-    } else {
-      for (let buildRow = 0; buildRow < height; buildRow++) {
-        const newRow: boolean[] = [];
-        for (let buildCol = 0; buildCol < length; buildCol++) {
-          const randomPointer = Math.ceil(Math.random() * 100 + 1);
-          newRow.push(randomPointer <= aliveProbabilityPercent ? true : false);
-        }
-        boolMatrix.push(newRow);
+   }
+
+
+   toggleCell = (targetCoordinates: Coordinates) => {
+      const [targetRow, targetCol] = targetCoordinates;
+      let { boolMatrix } = this.data;
+      boolMatrix[targetRow][targetCol] = !boolMatrix[targetRow][targetCol];
+   }
+
+   evalCellNextStatus = (inputCoordinates: Coordinates) => {
+      const { boolMatrix } = this.data;
+
+      // helper function: takes in cell coordinates and returns count of truthy neighbors
+      const countAliveNeighbors = (inputCoordinates: Coordinates) => {
+         const [inputRow, inputCol] = inputCoordinates;
+         let numOfAliveNeighbors = 0;
+         for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
+            for (let colOffset = -1; colOffset <= 1; colOffset++) {
+               const [currentRow, currentCol] =  [inputRow + rowOffset, inputCol + colOffset];
+               if (rowOffset === 0 && colOffset === 0) {
+                  continue; // skip input cell
+               }
+               if (
+                  boolMatrix[currentRow] &&
+                  boolMatrix[currentRow][currentCol]
+               ) numOfAliveNeighbors += 1;
+            }
+         }
+         return numOfAliveNeighbors;
       }
-    }
-  }
 
-
-  toggleCell = (targetCoordinates: Coordinates) => {
-    const [targetRow, targetCol] = targetCoordinates;
-    let { boolMatrix } = this.data;
-    boolMatrix[targetRow][targetCol] = !boolMatrix[targetRow][targetCol];
-  }
-
-  evalCellNextStatus = (inputCoordinates: Coordinates) => {
-    const { boolMatrix } = this.data;
-
-    // helper function: takes in cell coordinates and returns count of truthy neighbors
-    const countAliveNeighbors = (inputCoordinates: Coordinates) => {
       const [inputRow, inputCol] = inputCoordinates;
-      let numOfAliveNeighbors = 0;
-      for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
-        for (let colOffset = -1; colOffset <= 1; colOffset++) {
-          const [currentRow, currentCol] =  [inputRow + rowOffset, inputCol + colOffset];
-          if (rowOffset === 0 && colOffset === 0) {
-            continue; // skip input cell
-          }
-          if (
-            boolMatrix[currentRow] &&
-            boolMatrix[currentRow][currentCol]
-            ) numOfAliveNeighbors += 1;
-        }
+      // checks input coordinates point to in-bound cell, and throws error if not
+      if (boolMatrix[inputRow] === undefined || boolMatrix[inputRow][inputCol] === undefined) {
+         throw Error('out-of-bounds');
       }
-      return numOfAliveNeighbors;
-    }
+      const isInputCellAlive = boolMatrix[inputRow][inputCol];
+      const numOfAliveNeighbors = countAliveNeighbors(inputCoordinates);
+      if (isInputCellAlive) {
+         if (numOfAliveNeighbors === 2 || numOfAliveNeighbors === 3) {
+            return true;
+         }
+      } else if (numOfAliveNeighbors === 3) {
+         return true;
+      }
+      return false;
+   }
 
-    const [inputRow, inputCol] = inputCoordinates;
-    // checks input coordinates point to in-bound cell, and throws error if not
-    if (boolMatrix[inputRow] === undefined || boolMatrix[inputRow][inputCol] === undefined) {
-      throw Error('out-of-bounds');
-    }
-    const isInputCellAlive = boolMatrix[inputRow][inputCol];
-    const numOfAliveNeighbors = countAliveNeighbors(inputCoordinates);
-    if (isInputCellAlive) {
-      if (numOfAliveNeighbors === 2 || numOfAliveNeighbors === 3) {
-        return true;
+   advanceToNextBoardState = () => {
+      const { evalCellNextStatus } = this;
+      const newMatrix: BoolMatrix = [];
+      for (let buildRow = 0; buildRow < this.data.boolMatrix.length; buildRow++) {
+         const newRow: boolean[] = [];
+         for (let buildCol = 0; buildCol < this.data.boolMatrix[buildRow].length; buildCol++) {
+            const currentCellCoordinates: Coordinates = [buildRow, buildCol];
+            const cellNextStatus = evalCellNextStatus(currentCellCoordinates);
+            newRow.push(cellNextStatus);
+         }
+         newMatrix.push(newRow);
       }
-    } else if (numOfAliveNeighbors === 3) {
-      return true;
-    }
-    return false;
-  }
-
-  advanceToNextBoardState = () => {
-    const { evalCellNextStatus } = this;
-    const newMatrix: BoolMatrix = [];
-    for (let buildRow = 0; buildRow < this.data.boolMatrix.length; buildRow++) {
-      const newRow: boolean[] = [];
-      for (let buildCol = 0; buildCol < this.data.boolMatrix[buildRow].length; buildCol++) {
-        const currentCellCoordinates: Coordinates = [buildRow, buildCol];
-        const cellNextStatus = evalCellNextStatus(currentCellCoordinates);
-        newRow.push(cellNextStatus);
-      }
-      newMatrix.push(newRow);
-    }
-    this.data.boolMatrix = [...newMatrix];
-  }
+      this.data.boolMatrix = [...newMatrix];
+   }
 }
 
 

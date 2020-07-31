@@ -25,94 +25,94 @@ type Coordinates = [number, number];
 
 /* COMPONENT */
 const Main = () => {
-  const [board, setBoard] = useState(new GameBoard());
-  const [reload, setReload] = useState(0);
-  const [tickDuration, setTickDuration] = useState(1000);  // number in milliseconds (ms)
-  const [ticksPassed, setTicksPassed] = useState(0);
-  const [isClockRunning, setIsClockRunning] = useState(false);
-  const [isForecastBirthsOn, setIsForecastBirthsOn] = useState(false);
-  const [isForecastDeathsOn, setIsForecastDeathsOn] = useState(false);
+   const [board, setBoard] = useState(new GameBoard());
+   const [reload, setReload] = useState(0);
+   const [tickDuration, setTickDuration] = useState(1000);  // number in milliseconds (ms)
+   const [ticksPassed, setTicksPassed] = useState(0);
+   const [isClockRunning, setIsClockRunning] = useState(false);
+   const [isForecastBirthsOn, setIsForecastBirthsOn] = useState(false);
+   const [isForecastDeathsOn, setIsForecastDeathsOn] = useState(false);
 
-  useEffect(() => {
-    let clock: NodeJS.Timer;
-    if (isClockRunning && tickDuration !== 0) {
-      clock = setInterval(() => {
-        board.advanceToNextBoardState();
-        setTicksPassed(ticksPassed + 1);
-      }, tickDuration);
-    }
-    return () => clearInterval(clock);
-  }, [board, isClockRunning, ticksPassed, tickDuration]);
-
-
-  // EVENT HANDLERS
-  const handleClickCell = (targetCoordinates: Coordinates) => {
-    board.toggleCell(targetCoordinates);
-    setReload(reload + 1);
-  }
-
-  const handleClickAdvanceOneTick = () => {
-    board.advanceToNextBoardState();
-    setTicksPassed(ticksPassed + 1);
-  }
-
-  const handleToggleClock = () => {
-    setIsClockRunning(!isClockRunning);
-  }
-
-  const handleChangeTickDuration = (event: ChangeEvent<HTMLInputElement>) => {
-    setTickDuration(parseInt(event.target.value));
-  }
-
-  const handleGenNewRandomizedPopulation = () => {
-    setTicksPassed(0);
-    setBoard(new GameBoard(22));  // DEV hardcode random true to 22% for now. todo input for random percent
-  }
-
-  const handleGenNewBoard = () => {
-    setTicksPassed(0);
-    setBoard(new GameBoard());
-  }
-
-  const handleToggleForecastBirths = () => {
-    setIsForecastBirthsOn(!isForecastBirthsOn);
-  }
-  const handleToggleForecastDeaths = () => {
-    setIsForecastDeathsOn(!isForecastDeathsOn);
-  }
+   useEffect(() => {
+      let clock: NodeJS.Timer;
+      if (isClockRunning && tickDuration !== 0) {
+         clock = setInterval(() => {
+            board.advanceToNextBoardState();
+            setTicksPassed(ticksPassed + 1);
+         }, tickDuration);
+      }
+      return () => clearInterval(clock);
+   }, [board, isClockRunning, ticksPassed, tickDuration]);
 
 
-  // RETURN
-  return (
-    <div className='Main'>
-      <div className='sidebar'>
-        <Header />
-        <Description />
-        <Controls
-          isClockRunning={isClockRunning}
-          tickDuration={tickDuration}
-          isForecastBirthsOn={isForecastBirthsOn}
-          isForecastDeathsOn={isForecastDeathsOn}
-          handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
-          handleGenNewBoard={handleGenNewBoard}
-          handleChangeTickDuration={handleChangeTickDuration}
-          handleToggleForecastBirths={handleToggleForecastBirths}
-          handleToggleForecastDeaths={handleToggleForecastDeaths}
-          handleClickAdvanceOneTick={handleClickAdvanceOneTick}
-          handleToggleClock={handleToggleClock}
-        />
-        <FeedbackDisplay
-          isClockRunning={isClockRunning}
-          ticksPassed={ticksPassed}
-        />
+   // EVENT HANDLERS
+   const handleClickCell = (targetCoordinates: Coordinates) => {
+      board.toggleCell(targetCoordinates);
+      setReload(reload + 1);
+   }
+
+   const handleClickAdvanceOneTick = () => {
+      board.advanceToNextBoardState();
+      setTicksPassed(ticksPassed + 1);
+   }
+
+   const handleToggleClock = () => {
+      setIsClockRunning(!isClockRunning);
+   }
+
+   const handleChangeTickDuration = (event: ChangeEvent<HTMLInputElement>) => {
+      setTickDuration(parseInt(event.target.value));
+   }
+
+   const handleGenNewRandomizedPopulation = () => {
+      setTicksPassed(0);
+      setBoard(new GameBoard(22));  // DEV hardcode random true to 22% for now. todo input for random percent
+   }
+
+   const handleGenNewBoard = () => {
+      setTicksPassed(0);
+      setBoard(new GameBoard());
+   }
+
+   const handleToggleForecastBirths = () => {
+      setIsForecastBirthsOn(!isForecastBirthsOn);
+   }
+   const handleToggleForecastDeaths = () => {
+      setIsForecastDeathsOn(!isForecastDeathsOn);
+   }
+
+
+   // RETURN
+   return (
+      <div className='Main'>
+         <div className='sidebar'>
+            <Header />
+            <Description />
+            <Controls
+               isClockRunning={isClockRunning}
+               tickDuration={tickDuration}
+               isForecastBirthsOn={isForecastBirthsOn}
+               isForecastDeathsOn={isForecastDeathsOn}
+               handleGenNewRandomizedPopulation={handleGenNewRandomizedPopulation}
+               handleGenNewBoard={handleGenNewBoard}
+               handleChangeTickDuration={handleChangeTickDuration}
+               handleToggleForecastBirths={handleToggleForecastBirths}
+               handleToggleForecastDeaths={handleToggleForecastDeaths}
+               handleClickAdvanceOneTick={handleClickAdvanceOneTick}
+               handleToggleClock={handleToggleClock}
+            />
+            <FeedbackDisplay
+               isClockRunning={isClockRunning}
+               ticksPassed={ticksPassed}
+            />
+         </div>
+         <MatrixDisplay
+            dataMatrix={board.data.boolMatrix}
+            handleClickCell={handleClickCell}
+            reload={reload}
+         />
       </div>
-      <MatrixDisplay
-        dataMatrix={board.data.boolMatrix}
-        handleClickCell={handleClickCell}
-        reload={reload}
-      />
-    </div>
-  );
+   );
 }
 
 

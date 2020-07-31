@@ -10,23 +10,23 @@ import React, { memo } from 'react'
 
 /* TYPING */
 interface Props {
-  cellStatus: boolean;
-  dataRowIndex: number;
-  dataColIndex: number;
+   cellStatus: boolean;
+   dataRowIndex: number;
+   dataColIndex: number;
 }
 
 
 /* COMPONENT */
 const MemoizedCellDisplay = memo(
-  function CellDisplay({ cellStatus, dataRowIndex, dataColIndex }: Props) {
-    return(
-      <div
-        className={`cell${cellStatus ? ' alive' : ''}`}
-        data-row={dataRowIndex}
-        data-col={dataColIndex}
-      ></div>
-    );
-  }
+   function CellDisplay({ cellStatus, dataRowIndex, dataColIndex }: Props) {
+      return(
+         <div
+            className={`cell${cellStatus ? ' alive' : ''}`}
+            data-row={dataRowIndex}
+            data-col={dataColIndex}
+         ></div>
+      );
+   }
 );
 
 
