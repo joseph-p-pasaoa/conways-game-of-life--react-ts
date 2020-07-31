@@ -7,20 +7,30 @@ GameBoard Class | Tribute to Conway's Game of Life
 type Coordinates = [number, number];
 type BoolMatrix = boolean[][];
 interface StatusObject {
-  boolMatrix: boolean[][];
+   boolMatrix: BoolMatrix;
 }
 
 
 class GameBoard {
   data: StatusObject;
 
-  constructor(aliveProbabilityPercent = 0, height = 40, length = 40) {
-    this.data = { boolMatrix: [] };
-    let { boolMatrix } = this.data;
-    if (aliveProbabilityPercent === 0) {
-      for (let buildRow = 0; buildRow < height; buildRow++) {
-        const newFalseRow = new Array<boolean>(length).fill(false);
-        boolMatrix.push(newFalseRow);
+   constructor(aliveProbabilityPercent = 0, height = 40, length = 40) {
+      this.data = { boolMatrix: [] };
+      let { boolMatrix } = this.data;
+      if (aliveProbabilityPercent === 0) {  // new empty boolmatrix
+         for (let buildRow = 0; buildRow < height; buildRow++) {
+            const newFalseRow = new Array<boolean>(length).fill(false);
+            boolMatrix.push(newFalseRow);
+         }
+      } else {  // new boolmatrix with approximately `aliveProbabilityPercent` alive
+         for (let buildRow = 0; buildRow < height; buildRow++) {
+            const newRow: boolean[] = [];
+            for (let buildCol = 0; buildCol < length; buildCol++) {
+               const randomPointer = Math.ceil(Math.random() * 100 + 1);
+               newRow.push(randomPointer <= aliveProbabilityPercent);
+            }
+            boolMatrix.push(newRow);
+         }
       }
     } else {
       for (let buildRow = 0; buildRow < height; buildRow++) {
