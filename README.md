@@ -2,9 +2,9 @@
 
 ## Developer: [Joseph P. Pasaoa](https://github.com/joseph-p-pasaoa) - [(LI)](https://www.linkedin.com/in/josephpasaoa)
 
-![screenshot](./static/20-0625-screencap.png)
+![screenshot](./static/20-0803-screencap.png)
 
-An implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
+A personal implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), under current development, using Typescript and React, looking towards statistics collection and data presentation.
 
 ---
 
