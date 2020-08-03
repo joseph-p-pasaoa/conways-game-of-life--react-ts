@@ -98,6 +98,10 @@ a {
 
 .Main {
     @include flex-straight(row);
+
+    max-width: 68.75rem;
+    margin: 0 auto;
+    padding-bottom: 1rem;
 }
 
 .header, .description, .controls, .status-display {
@@ -110,17 +114,16 @@ h1.title, h2.title--sub {
 }
 
 h1.title {
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 0;
 
-    font-size: 3rem;
+    font-size: 2.8rem;
+    line-height: 1.1;
 }
 
 h2.title--sub {
-    position: relative;
-    top: -5px;
-
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    font-style: italic;
 }
 
 h3.developer {
@@ -133,29 +136,62 @@ h3.developer {
     font-size: .8rem;
     line-height: 1.1rem;
 
+    ul {
+        max-width: 40.625rem;
+        margin-left: 1rem;
+    }
+
+    li + li {
+        margin-top: .3rem;
+    }
+
     p {
-        margin-bottom: .8rem;
+        margin: 1rem 0;
+        color: chartreuse;
     }
 }
 
 .controls {
     @include flex-straight(column, flex-start, flex-start);
 
-    margin-top: 2rem;
+    margin-top: 1.25rem;
 
-    // * + * {
-    //     margin-left: .8rem;
-    // }
+    .MuiFormControlLabel-root {
+        margin-left: -9px;
+    }
 
     .MuiTypography-body1 {
         color: #666;
     }
-}
 
-.clocktoggle {
-    color: green;
-    &.running {
-        color: red;
+    button {
+        position: relative;
+        margin: .3rem .3rem .3rem 0;
+        padding: .4rem .95rem;
+        border-radius: 1.5rem;
+        outline: none;
+        transition: background-color .1s ease-out;
+        cursor: pointer;
+
+        &.clocktoggle {
+            margin-bottom: 1rem;
+
+            color: green;
+            &.running {
+                color: red;
+            }
+        }
+
+        &:active {
+            top: 1px;
+            left: 1px;
+            border-style: outset;
+            background-color: #37e5f7;
+        }
+    }
+
+    .tickduration__label {
+        margin-top: .2rem;
     }
 }
 
@@ -164,22 +200,8 @@ h3.developer {
 
     margin-top: 1.6rem;
     line-height: 1.6rem;
-}
 
-button {
-    position: relative;
-    padding: .3rem .95rem;
-    border-radius: 1.5rem;
-    outline: none;
-    transition: background-color .1s ease-out;
-    cursor: pointer;
-
-    &:active {
-        top: 1px;
-        left: 1px;
-        border-style: outset;
-        background-color: #37e5f7;
-    }
+    color: chartreuse;
 }
 
 .tickduration__label, .tickduration__rangeinput {
@@ -262,6 +284,10 @@ button {
         text-align: center;
     }
 
+    .title__break-on-large {
+        display: none;
+    }
+
     h2.title--sub {
         position: static;
         text-align: center;
@@ -272,21 +298,8 @@ button {
         margin: 0 auto;
     }
 
-    .description {
-        ul {
-            max-width: 40.625rem;
-            margin-left: 1rem;
-        }
-
-        li + li {
-            margin-top: .3rem;
-        }
-
-        p {
-            margin: 1rem 0;
-            text-align: center;
-            color: chartreuse;
-        }
+    .description p {
+        text-align: center;
     }
 
     .controls {
@@ -299,12 +312,7 @@ button {
         }
 
         .tickduration__label {
-            margin-top: .2rem;
             text-align: center;
-        }
-
-        .clocktoggle {
-            margin-bottom: 1rem;
         }
 
         .MuiTypography-body1 {
