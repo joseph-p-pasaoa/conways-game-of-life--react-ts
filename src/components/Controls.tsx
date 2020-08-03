@@ -152,7 +152,7 @@ const Controls = (props: Props) => {
                   }}
                />
             }
-            label='Forecast Births'
+            label='Forecast Births (not implemented yet)'
          />
          <FormControlLabel
             control={
@@ -166,7 +166,7 @@ const Controls = (props: Props) => {
                   }}
                />
             }
-            label='Forecast Deaths'
+            label='Forecast Deaths (not implemented yet)'
          />
       </div>
    );
