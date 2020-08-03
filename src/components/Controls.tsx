@@ -88,7 +88,7 @@ const Controls = (props: Props) => {
 
    return(
       <div className='controls'>
-         <div>
+         <div className='btn--board'>
             <button
                type='button'
                onClick={handleGenNewRandomizedPopulation}

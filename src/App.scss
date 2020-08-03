@@ -243,3 +243,85 @@ button {
         }
     }
 }
+
+
+// temp media query for media responsiveness for small devices
+// DEV TODO devise better css for sluggish cell resizing
+@media (max-width: 899px) {
+    .Main {
+        @include flex-straight(column, flex-start, center);
+    }
+
+    .header {
+        @include flex-straight(column, flex-start, center);
+    }
+
+    h1.title {
+        margin-top: 0;
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    h2.title--sub {
+        position: static;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    a:link, a:visited {
+        margin: 0 auto;
+    }
+
+    .description {
+        ul {
+            max-width: 40.625rem;
+            margin-left: 1rem;
+        }
+
+        li + li {
+            margin-top: .3rem;
+        }
+
+        p {
+            margin: 1rem 0;
+            text-align: center;
+            color: chartreuse;
+        }
+    }
+
+    .controls {
+        @include flex-straight(column, flex-start, center);
+
+        button {
+            padding: .6rem .95rem;
+            font-size: .7rem;
+            margin: .4rem .2rem;
+        }
+
+        .tickduration__label {
+            margin-top: .2rem;
+            text-align: center;
+        }
+
+        .clocktoggle {
+            margin-bottom: 1rem;
+        }
+
+        .MuiTypography-body1 {
+            font-size: .75rem;
+        }
+    }
+
+    .status-display {
+        align-items: center;
+    }
+
+    .matrix {
+        margin: 1rem auto 1.5rem;
+    }
+
+    .cell {
+        width: 2.25vmin;
+        height: 2.25vmin;
+    }
+}
